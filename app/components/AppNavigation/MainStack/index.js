@@ -1,5 +1,5 @@
 import { TabNavigator, StackNavigator } from 'react-navigation';
-import Login from '../../Login/index';
+import Login from '../../Login/withConnect';
 import Home from '../../Home/index';
 import Maps from '../../Maps/index';
 import Profiles from '../../Profiles/index';
