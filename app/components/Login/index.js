@@ -25,9 +25,9 @@ export default class LoginView extends Component {
     }
   }
 
-  componentWillReceiveProps(nextProps){
-    console.warn(nextProps);
-  }
+  // componentWillReceiveProps(nextProps){
+  //   console.warn(nextProps);
+  // }
 
   componentWillMount() {
     BackHandler.addEventListener('hardwareBackPress', this.handleBackButtonClick);

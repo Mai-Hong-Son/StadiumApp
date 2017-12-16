@@ -3,14 +3,14 @@ import Login from '../../Login/withConnect';
 import Home from '../../Home/index';
 import Maps from '../../Maps/index';
 import Profiles from '../../Profiles/index';
-import Sessions from '../../Sessions/index';
+import Stadiums from '../../Stadiums/index';
 
 const RootTabs = TabNavigator({
     Home: {
         screen: Home,
     },
-    Sessions: {
-        screen: Sessions,
+    Stadiums: {
+        screen: Stadiums,
     },
     Maps: {
         screen: Maps,

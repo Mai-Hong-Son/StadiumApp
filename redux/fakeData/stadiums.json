@@ -1,0 +1,33 @@
+{
+    "success": true,
+    "errors": [],
+    "messages": [],
+    "": "",
+    "result": [
+      {
+        "id": "1",
+        "name": "san 1",
+        "address": "Ha noi",
+        "images": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6RaRKOK9cOcXyHb-XmmRZMRQcLWVEnfFX-4cF9eZpQgmmB8Bv"
+      },
+      {
+        "id": "2",
+        "name": "san 2",
+        "address": "Ha noi",
+        "images": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6RaRKOK9cOcXyHb-XmmRZMRQcLWVEnfFX-4cF9eZpQgmmB8Bv"
+      },
+      {
+        "id": "3",
+        "name": "san 3",
+        "address": "Ha noi",
+        "images": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6RaRKOK9cOcXyHb-XmmRZMRQcLWVEnfFX-4cF9eZpQgmmB8Bv"
+      },
+      {
+        "id": "4",
+        "name": "san 4",
+        "address": "Ha noi",
+        "images": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6RaRKOK9cOcXyHb-XmmRZMRQcLWVEnfFX-4cF9eZpQgmmB8Bv"
+      }
+    ],
+    "result_info": {}
+  }
