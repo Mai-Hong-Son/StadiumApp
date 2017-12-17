@@ -86,7 +86,7 @@ export default class LoginView extends Component {
       AccessToken.getCurrentAccessToken().then(
         (data) => {
           this.props.checkLogin();
-          this.props.navigation.navigate('HomeStack');
+          this.props.navigation.navigate('HomeStack', { data: data });
         }
       )
     }

@@ -32,7 +32,7 @@ export default class Sessions extends Component {
     };
 
     render() {
-        const { tabId, variant } = this.props;
+        const { tabId, variant, navigation: { navigate } } = this.props;
         return (
         <View style={styles.container}>
             <SessionListView
@@ -40,7 +40,8 @@ export default class Sessions extends Component {
             sessionsData={this.sessionsData}
             stadiumsData={this.stadiumsData}
             tabId={tabId}
-            variant={variant}/>
+            variant={variant}
+            navigate={navigate}/>
         </View>
         );
   }

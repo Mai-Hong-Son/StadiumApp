@@ -15,7 +15,7 @@ export default class DataRow extends Component {
     const { duration, startMoment } = session;
 
     return (
-    <TouchableOpacity onPress={() => null}>
+    <TouchableOpacity onPress={() => this.props.navigate('SessionDetail', { session: session, stadium: stadium })}>
       <View style={styles.container}>
         <Icon name='md-football' size={30} color="#900"  />
         <View style={styles.content}>

@@ -5,7 +5,8 @@ import {
   View,
   Image,
   Text,
-  TouchableOpacity
+  TouchableOpacity,
+  TextInput
 } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
@@ -14,11 +15,17 @@ export default class Header extends Component {
     return (
     <View style= {styles.container}>
       <View style= {styles.stylefilter}>
-        <TouchableOpacity containerStyle={styles.Buttonfilter} onPress={() => null} >
+        {/* <TouchableOpacity containerStyle={styles.Buttonfilter} onPress={() => null} >
           <View style= {styles.containerFilter}>
             <MaterialCommunityIcons color={'#32CD32'} name="filter-outline" size={25} style={styles.iconFilter} />
+            <Text>aaaaa</Text>
           </View>
-        </TouchableOpacity>
+        </TouchableOpacity> */}
+        <TextInput
+        style={styles.containerFilter}
+        underlineColorAndroid='transparent'
+        placeholder='Search for stadiums'
+        placeholderTextColor='#6e6e6e'/>
       </View>
     </View>
     );
@@ -54,7 +61,8 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
         marginBottom: 15,
         marginTop: 10,
-        paddingTop: 5
+        paddingTop: 5,
+        paddingLeft: 10
     },
     textFilter: {
         flex:8,

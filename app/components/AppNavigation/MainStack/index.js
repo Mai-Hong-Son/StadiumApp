@@ -5,6 +5,8 @@ import Maps from '../../Maps/index';
 import Profiles from '../../Profiles/index';
 import Stadiums from '../../Stadiums/index';
 import Sessions from '../../Sessions/index';
+import SessionDetail from '../../SessionDetail/index';
+import ConfirmSession from '../../ConfirmSession/index';
 import { OverallSchedulesTabs } from './WeekdayTabs';
 
 const StadiumStack = StackNavigator({
@@ -28,6 +30,32 @@ const StadiumStack = StackNavigator({
             headerTitleStyle: {
                 color: '#ffffff',
                 marginLeft: '27%'
+            },
+            headerTintColor: '#ffffff'
+        }
+    },
+    SessionDetail: {
+        screen: SessionDetail,
+        navigationOptions: {
+            title: null,
+            headerStyle: {
+                backgroundColor: '#32CD32',
+                elevation: 0, 
+                opacity: 0
+            },
+            headerBackTitleStyle : {
+                opacity: 1
+            },
+            headerTintColor: '#ffffff'
+        }
+    },
+    ConfirmSession: {
+        screen: ConfirmSession,
+        navigationOptions: {
+            title: null,
+            headerStyle: {
+                backgroundColor: '#32CD32',
+                elevation: 0, 
             },
             headerTintColor: '#ffffff'
         }

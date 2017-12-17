@@ -53,7 +53,7 @@ export default class SessionListView extends Component {
     );
 
     renderItem = ({item}) => {
-        const { tabId, variant, stadiumsData } = this.props;
+        const { tabId, variant, stadiumsData, navigate } = this.props;
 
         return (
             <DataRow
@@ -61,6 +61,7 @@ export default class SessionListView extends Component {
             stadium={stadiumsData}
             tabId={tabId}
             variant={variant}
+            navigate={navigate}
             />
         );
     };
