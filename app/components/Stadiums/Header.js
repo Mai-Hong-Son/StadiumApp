@@ -14,9 +14,9 @@ export default class Header extends Component {
     return (
     <View style= {styles.container}>
       <View style= {styles.stylefilter}>
-        <TouchableOpacity containerStyle= {styles.Buttonfilter} onPress={() => null} >
+        <TouchableOpacity containerStyle={styles.Buttonfilter} onPress={() => null} >
           <View style= {styles.containerFilter}>
-            <MaterialCommunityIcons color={'white'} name="filter-outline" size={25} style={styles.iconFilter} />
+            <MaterialCommunityIcons color={'#32CD32'} name="filter-outline" size={25} style={styles.iconFilter} />
           </View>
         </TouchableOpacity>
       </View>
@@ -33,18 +33,10 @@ const styles = StyleSheet.create({
     },
     stylefilter: {
         flex: 1,
+        justifyContent: 'center',
     },
     Buttonfilter: {
         flex: 1,
-        width: 343,
-        height: 44,
-        borderRadius:4,
-        borderWidth: 1,
-        backgroundColor: 'gray',
-        borderColor: 'gray',
-        justifyContent: 'center',
-        alignSelf: 'center',
-        marginBottom: 20,
     },
     iconFilter: {
         flex:1,
@@ -52,6 +44,17 @@ const styles = StyleSheet.create({
     },
     containerFilter: {
         flexDirection: 'row',
+        width: 343,
+        height: 44,
+        borderRadius:4,
+        borderWidth: 1,
+        backgroundColor: '#E0FFFF',
+        borderColor: 'gray',
+        justifyContent: 'center',
+        alignSelf: 'center',
+        marginBottom: 15,
+        marginTop: 10,
+        paddingTop: 5
     },
     textFilter: {
         flex:8,

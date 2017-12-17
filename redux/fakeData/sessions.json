@@ -7,30 +7,42 @@
         {
             "id": "1",
             "stadiumid": "1",
-            "timeStart": "7:00",
-            "timeEnd": "9:30",
-            "price": "100000"
+            "name": "Morning time",
+            "startMoment": "100088",
+            "duration": "90",
+            "price": "100000",
+            "is_reserved": "false",
+            "reservationCode": "null"
         },
         {
             "id": "2",
-            "stadiumid": "2",
-            "timeStart": "9:30",
-            "timeEnd": "11:00",
-            "price": "100000"
+            "stadiumid": "1",
+            "name": "Morning time",
+            "startMoment": "100088",
+            "duration": "90",
+            "price": "100000",
+            "is_reserved": "false",
+            "reservationCode": "null"
         },
         {
             "id": "3",
-            "stadiumid": "3",
-            "timeStart": "13:00",
-            "timeEnd": "14:30",
-            "price": "100000"
+            "stadiumid": "1",
+            "name": "Morning time",
+            "startMoment": "100088",
+            "duration": "90",
+            "price": "100000",
+            "is_reserved": "false",
+            "reservationCode": "null"
         },
         {
             "id": "4",
-            "stadiumid": "4",
-            "timeStart": "14:30",
-            "timeEnd": "16:00",
-            "price": "100000"
+            "stadiumid": "1",
+            "name": "Morning time",
+            "startMoment": "100088",
+            "duration": "90",
+            "price": "100000",
+            "is_reserved": "false",
+            "reservationCode": "null"
         }
     ],
     "result_info": {}

@@ -14,7 +14,7 @@ const stadiums = require('../../../redux/fakeData/stadiums');
 export default class Stadiums extends Component {
 
   renderItem = ({ item }) => (
-    <TouchableOpacity>
+    <TouchableOpacity onPress={ () => this.props.navigation.navigate('Sessions', { stadiumId: item.id}) }>
       <ContentRow item={item} />
     </TouchableOpacity>
   );

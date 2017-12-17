@@ -4,13 +4,45 @@ import Home from '../../Home/index';
 import Maps from '../../Maps/index';
 import Profiles from '../../Profiles/index';
 import Stadiums from '../../Stadiums/index';
+import Sessions from '../../Sessions/index';
+import { OverallSchedulesTabs } from './WeekdayTabs';
+
+const StadiumStack = StackNavigator({
+    Stadiums: {
+        screen: Stadiums,
+        navigationOptions: {
+            header: null,
+        }
+    },
+    Sessions: {
+        screen: OverallSchedulesTabs,
+        cardStyle: {
+            shadowColor: 'transparent',
+        },
+        navigationOptions: {
+            title: 'Session List',
+            headerStyle: {
+                backgroundColor: '#32CD32',
+                elevation: 0, 
+            },
+            headerTitleStyle: {
+                color: '#ffffff',
+                marginLeft: '27%'
+            },
+            headerTintColor: '#ffffff'
+        }
+    },
+});
 
 const RootTabs = TabNavigator({
     Home: {
         screen: Home,
     },
-    Stadiums: {
-        screen: Stadiums,
+    StadiumLT: {
+        screen: StadiumStack,
+        navigationOptions: {
+            title: 'Stadiums',
+        }
     },
     Maps: {
         screen: Maps,
@@ -22,7 +54,7 @@ const RootTabs = TabNavigator({
     tabBarPosition: 'bottom',
     animationEnabled: true,
     tabBarOptions: {
-      activeTintColor: '#ADD8E6',
+      activeTintColor: 'pink',
       style: {
           backgroundColor: '#32CD32',
       }
