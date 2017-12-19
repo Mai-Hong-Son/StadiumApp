@@ -90,9 +90,9 @@ const RootTabs = TabNavigator({
 });
 
 const MainStack = StackNavigator({
-    Login: {
-        screen: Login,
-    },
+    // Login: {
+    //     screen: Login,
+    // },
     HomeStack: {
         screen: RootTabs,
     },

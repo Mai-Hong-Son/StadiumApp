@@ -3627,6 +3627,10 @@ react-native-invertible-scroll-view@^1.0.0:
     react-clone-referenced-element "^1.0.1"
     react-native-scrollable-mixin "^1.0.1"
 
+react-native-maps@^0.19.0:
+  version "0.19.0"
+  resolved "https://registry.yarnpkg.com/react-native-maps/-/react-native-maps-0.19.0.tgz#ce94fad1cf360e335cb4338a68c95f791e869074"
+
 react-native-onesignal@^3.0.7:
   version "3.0.7"
   resolved "https://registry.yarnpkg.com/react-native-onesignal/-/react-native-onesignal-3.0.7.tgz#d4fd7cb8297aada7e1a11abef311fb577d3f8428"

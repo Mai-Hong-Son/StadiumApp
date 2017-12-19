@@ -29,7 +29,7 @@
         {
             "id": "3",
             "stadiumid": "1",
-            "name": "Morning time",
+            "name": "Middle time",
             "startMoment": "11",
             "duration": "90",
             "price": "100000",
@@ -40,7 +40,7 @@
         {
             "id": "4",
             "stadiumid": "1",
-            "name": "Morning time",
+            "name": "Afternoon time",
             "startMoment": "15",
             "duration": "90",
             "price": "100000",
