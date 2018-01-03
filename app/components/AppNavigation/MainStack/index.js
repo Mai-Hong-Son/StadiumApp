@@ -1,7 +1,7 @@
 import { TabNavigator, StackNavigator } from 'react-navigation';
 import Login from '../../Login/withConnect';
 import Home from '../../Home/index';
-import Maps from '../../Maps/index';
+// import Maps from '../../Maps/index';
 import Profiles from '../../Profiles/index';
 import Stadiums from '../../Stadiums/index';
 import Sessions from '../../Sessions/index';
@@ -72,9 +72,9 @@ const RootTabs = TabNavigator({
             title: 'Stadiums',
         }
     },
-    Maps: {
-        screen: Maps,
-    },
+    // Maps: {
+    //     screen: Maps,
+    // },
     Profile: {
         screen: Profiles,
     },
