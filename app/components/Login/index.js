@@ -1,12 +1,9 @@
 import React, { Component } from 'react';
-import { LoginButton, AccessToken } from 'react-native-fbsdk';
+import { LoginManager } from 'react-native-fbsdk';
 import { View, Text, BackHandler, Image } from 'react-native';
-import { GoogleAnalyticsTracker } from 'react-native-google-analytics-bridge';
 import OneSignal from 'react-native-onesignal';
 
 const backgroundStadium = require('./../../../assets/images/backgroundStadium.jpg');
-
-const tracker = new GoogleAnalyticsTracker('UA-109683925-2');
 
 export default class LoginView extends Component {
   constructor(props){
@@ -75,43 +72,13 @@ export default class LoginView extends Component {
     return false;
   }
 
-  onLoginFinished = (error, result) => {
-    tracker.trackEvent('ButtonClick', 'Login');
-    OneSignal.sendTags({userId: this.state.userId});
-    if (error) {
-      alert("login has error: " + result.error);
-    } else if (result.isCancelled) {
-      alert("login is cancelled.");
-    } else {
-      AccessToken.getCurrentAccessToken().then(
-        (data) => {
-          this.props.checkLogin();
-          this.props.navigation.navigate('HomeStack', { data: data });
-        }
-      )
-    }
-  }
-
-  onLogoutFinished = () => {
-    tracker.trackEvent('ButtonClick', 'Logout');
-    this.props.checkLogin();
-    this.props.navigation.navigate('Login');
-  }
-
   render() {
     return (
       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center'}}>
         <Image
         style={{ flex: 1, resizeMode: 'cover', justifyContent: 'center', alignItems: 'center'}}
         source={backgroundStadium}
-        blurRadius={0.5} />
-        <LoginButton
-          style={{ width: '90%' , height: 30, position: 'absolute' }}
-          publishPermissions={["publish_actions"]}
-          onLoginFinished={
-            (error, result) => this.onLoginFinished(error, result)
-          }
-          onLogoutFinished={() => this.onLogoutFinished()}/>
+        blurRadius={0.2} />
       </View>
       
     );

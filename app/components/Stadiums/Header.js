@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
     container: {
         backgroundColor: '#32CD32',
         justifyContent: 'center',
-        height: 70,
+        height: 90,
     },
     stylefilter: {
         flex: 1,
@@ -60,7 +60,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignSelf: 'center',
         marginBottom: 15,
-        marginTop: 10,
+        marginTop: 40,
         paddingTop: 5,
         paddingLeft: 10
     },

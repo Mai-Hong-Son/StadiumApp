@@ -1,7 +1,8 @@
+// import { Image } from 'react-native';
 import { TabNavigator, StackNavigator } from 'react-navigation';
 import Login from '../../Login/withConnect';
 import Home from '../../Home/index';
-// import Maps from '../../Maps/index';
+import Maps from '../../Maps/index';
 import Profiles from '../../Profiles/index';
 import Stadiums from '../../Stadiums/index';
 import Sessions from '../../Sessions/index';
@@ -69,23 +70,24 @@ const RootTabs = TabNavigator({
     StadiumLT: {
         screen: StadiumStack,
         navigationOptions: {
-            title: 'Stadiums',
+            tabBarLabel: 'Stadiums',
         }
     },
-    // Maps: {
-    //     screen: Maps,
-    // },
+    Maps: {
+        screen: Maps,
+    },
     Profile: {
         screen: Profiles,
     },
 },{
     tabBarPosition: 'bottom',
-    animationEnabled: true,
+    // animationEnabled: true,
     tabBarOptions: {
       activeTintColor: 'pink',
       style: {
           backgroundColor: '#32CD32',
-      }
+      },
+      showIcon: true,
     },
 });
 

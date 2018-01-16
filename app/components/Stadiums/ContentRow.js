@@ -11,6 +11,7 @@ export default class ContentRow extends Component {
 
   render() {
     const { item: { name, short_address, images} } = this.props;
+
     return (
     <View style={styles.container}>
         <View style={styles.containerThumbnail}>
