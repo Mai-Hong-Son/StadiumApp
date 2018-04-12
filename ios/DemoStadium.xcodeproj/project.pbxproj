@@ -24,7 +24,6 @@
 		13BABF15EFE84E4D924502EC /* Ionicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4E5B7D7CD8A64122B9BBF60E /* Ionicons.ttf */; };
 		140ED2AC1D01E1AD002B40FF /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
 		146834051AC3E58100842450 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
-		15D2E46C44074B1490F1AA90 /* libRCTGoogleAnalyticsBridge.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 03932EA6FD7741DD9D23F695 /* libRCTGoogleAnalyticsBridge.a */; };
 		2431F99FC8114649B0016616 /* libRCTFBSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EED28572661542E586A5E199 /* libRCTFBSDK.a */; };
 		2D02E4BC1E0B4A80006451C7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
@@ -338,13 +337,6 @@
 			remoteGlobalIDString = 9350E0F11CE3B0920041D815;
 			remoteInfo = RCTFBSDK;
 		};
-		DFFAA6581FFBAABD00B773DB /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 58EC619C8C57478A9AB6A515 /* RCTGoogleAnalyticsBridge.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = A79185C61C30694E001236A6;
-			remoteInfo = RCTGoogleAnalyticsBridge;
-		};
 		DFFAA65B1FFBAABD00B773DB /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = A4AD94CAAAF947FFAC623B5A /* RCTOneSignal.xcodeproj */;
@@ -371,7 +363,6 @@
 		00E356EE1AD99517003FC87E /* DemoStadiumTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DemoStadiumTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* DemoStadiumTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DemoStadiumTests.m; sourceTree = "<group>"; };
-		03932EA6FD7741DD9D23F695 /* libRCTGoogleAnalyticsBridge.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRCTGoogleAnalyticsBridge.a; sourceTree = "<group>"; };
 		139105B61AF99BAD00B5F7CC /* RCTSettings.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTSettings.xcodeproj; path = "../node_modules/react-native/Libraries/Settings/RCTSettings.xcodeproj"; sourceTree = "<group>"; };
 		139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTWebSocket.xcodeproj; path = "../node_modules/react-native/Libraries/WebSocket/RCTWebSocket.xcodeproj"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* DemoStadium.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DemoStadium.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -393,7 +384,6 @@
 		4E5B7D7CD8A64122B9BBF60E /* Ionicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Ionicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Ionicons.ttf"; sourceTree = "<group>"; };
 		53D7CCE628894D438A6A4F37 /* libAirMaps.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libAirMaps.a; sourceTree = "<group>"; };
 		5838CBB412BC4D278C8D68F9 /* libz.tbd */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
-		58EC619C8C57478A9AB6A515 /* RCTGoogleAnalyticsBridge.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RCTGoogleAnalyticsBridge.xcodeproj; path = "../node_modules/react-native-google-analytics-bridge/ios/RCTGoogleAnalyticsBridge/RCTGoogleAnalyticsBridge.xcodeproj"; sourceTree = "<group>"; };
 		5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTAnimation.xcodeproj; path = "../node_modules/react-native/Libraries/NativeAnimation/RCTAnimation.xcodeproj"; sourceTree = "<group>"; };
 		609EE60686E048338057DA8F /* Octicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Octicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Octicons.ttf"; sourceTree = "<group>"; };
 		737A3BB8A300408592352CCD /* libRNVectorIcons.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNVectorIcons.a; sourceTree = "<group>"; };
@@ -451,7 +441,6 @@
 				139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */,
 				2431F99FC8114649B0016616 /* libRCTFBSDK.a in Frameworks */,
 				DFFAA6651FFBABC400B773DB /* Bolts.framework in Frameworks */,
-				15D2E46C44074B1490F1AA90 /* libRCTGoogleAnalyticsBridge.a in Frameworks */,
 				89A4CB06296C4121BF50D705 /* CoreData.framework in Frameworks */,
 				D101B1FFCC62403D81C5E289 /* SystemConfiguration.framework in Frameworks */,
 				516D74CDDE424E30BD9FC105 /* libz.tbd in Frameworks */,
@@ -655,7 +644,6 @@
 				00C302DF1ABCB9EE00DB3ED1 /* RCTVibration.xcodeproj */,
 				139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */,
 				A3884AF705554861922C7B86 /* RCTFBSDK.xcodeproj */,
-				58EC619C8C57478A9AB6A515 /* RCTGoogleAnalyticsBridge.xcodeproj */,
 				A4AD94CAAAF947FFAC623B5A /* RCTOneSignal.xcodeproj */,
 				D675F3601DBF47B59B76A510 /* RNVectorIcons.xcodeproj */,
 				20F479DA16EF4F9E9C990070 /* AirMaps.xcodeproj */,
@@ -712,7 +700,6 @@
 			isa = PBXGroup;
 			children = (
 				EED28572661542E586A5E199 /* libRCTFBSDK.a */,
-				03932EA6FD7741DD9D23F695 /* libRCTGoogleAnalyticsBridge.a */,
 				D63459E711B94F1AA9ADD2C7 /* libRCTOneSignal.a */,
 				737A3BB8A300408592352CCD /* libRNVectorIcons.a */,
 				53D7CCE628894D438A6A4F37 /* libAirMaps.a */,
@@ -724,14 +711,6 @@
 			isa = PBXGroup;
 			children = (
 				DFFAA6561FFBAABD00B773DB /* libRCTFBSDK.a */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		DFFAA6491FFBAABC00B773DB /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				DFFAA6591FFBAABD00B773DB /* libRCTGoogleAnalyticsBridge.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -865,7 +844,7 @@
 						TestTargetID = 13B07F861A680F5B00A75B9A;
 					};
 					13B07F861A680F5B00A75B9A = {
-						DevelopmentTeam = 982R4TE27Z;
+						DevelopmentTeam = TNXA879DV6;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -924,10 +903,6 @@
 				{
 					ProductGroup = 00C302B61ABCB90400DB3ED1 /* Products */;
 					ProjectRef = 00C302B51ABCB90400DB3ED1 /* RCTGeolocation.xcodeproj */;
-				},
-				{
-					ProductGroup = DFFAA6491FFBAABC00B773DB /* Products */;
-					ProjectRef = 58EC619C8C57478A9AB6A515 /* RCTGoogleAnalyticsBridge.xcodeproj */;
 				},
 				{
 					ProductGroup = 00C302BC1ABCB91800DB3ED1 /* Products */;
@@ -1240,13 +1215,6 @@
 			remoteRef = DFFAA6551FFBAABD00B773DB /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		DFFAA6591FFBAABD00B773DB /* libRCTGoogleAnalyticsBridge.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libRCTGoogleAnalyticsBridge.a;
-			remoteRef = DFFAA6581FFBAABD00B773DB /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
 		DFFAA65C1FFBAABD00B773DB /* libRCTOneSignal.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -1412,11 +1380,18 @@
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(SRCROOT)..\node_modules\neact-native-fbsdkiosRCTFBSDK/**",
-					"$(SRCROOT)..\node_modules\neact-native-google-analytics-bridgeiosRCTGoogleAnalyticsBridge/**",
-					"$(SRCROOT)..\node_modules\neact-native-onesignaliosRCTOneSignal/**",
-					"$(SRCROOT)..\node_modules\neact-native-vector-iconsRNVectorIconsManager",
-					"$(SRCROOT)..\node_modules\neact-native-mapslibios/**",
+					"$(SRCROOT)..",
+					ode_modules,
+					"eact-native-fbsdkiosRCTFBSDK/**",
+					"$(SRCROOT)..",
+					ode_modules,
+					"eact-native-onesignaliosRCTOneSignal/**",
+					"$(SRCROOT)..",
+					ode_modules,
+					"eact-native-vector-iconsRNVectorIconsManager",
+					"$(SRCROOT)..",
+					ode_modules,
+					"eact-native-mapslibios/**",
 				);
 				INFOPLIST_FILE = DemoStadiumTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -1441,11 +1416,18 @@
 				COPY_PHASE_STRIP = NO;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(SRCROOT)..\node_modules\neact-native-fbsdkiosRCTFBSDK/**",
-					"$(SRCROOT)..\node_modules\neact-native-google-analytics-bridgeiosRCTGoogleAnalyticsBridge/**",
-					"$(SRCROOT)..\node_modules\neact-native-onesignaliosRCTOneSignal/**",
-					"$(SRCROOT)..\node_modules\neact-native-vector-iconsRNVectorIconsManager",
-					"$(SRCROOT)..\node_modules\neact-native-mapslibios/**",
+					"$(SRCROOT)..",
+					ode_modules,
+					"eact-native-fbsdkiosRCTFBSDK/**",
+					"$(SRCROOT)..",
+					ode_modules,
+					"eact-native-onesignaliosRCTOneSignal/**",
+					"$(SRCROOT)..",
+					ode_modules,
+					"eact-native-vector-iconsRNVectorIconsManager",
+					"$(SRCROOT)..",
+					ode_modules,
+					"eact-native-mapslibios/**",
 				);
 				INFOPLIST_FILE = DemoStadiumTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -1470,7 +1452,7 @@
 				CODE_SIGN_ENTITLEMENTS = DemoStadium/DemoStadium.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
-				DEVELOPMENT_TEAM = 982R4TE27Z;
+				DEVELOPMENT_TEAM = TNXA879DV6;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -1481,9 +1463,6 @@
 					ode_modules,
 					"eact-native-fbsdkiosRCTFBSDK/**",
 					"$(SRCROOT)/../node_modules/react-native-onesignal/ios/**",
-					"$(SRCROOT)..",
-					ode_modules,
-					"eact-native-google-analytics-bridgeiosRCTGoogleAnalyticsBridge/**",
 					"$(SRCROOT)..",
 					ode_modules,
 					"eact-native-onesignaliosRCTOneSignal/**",
@@ -1512,7 +1491,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = DemoStadium/DemoStadium.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 982R4TE27Z;
+				DEVELOPMENT_TEAM = TNXA879DV6;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -1523,9 +1502,6 @@
 					ode_modules,
 					"eact-native-fbsdkiosRCTFBSDK/**",
 					"$(SRCROOT)/../node_modules/react-native-onesignal/ios/**",
-					"$(SRCROOT)..",
-					ode_modules,
-					"eact-native-google-analytics-bridgeiosRCTGoogleAnalyticsBridge/**",
 					"$(SRCROOT)..",
 					ode_modules,
 					"eact-native-onesignaliosRCTOneSignal/**",
@@ -1562,11 +1538,18 @@
 				GCC_NO_COMMON_BLOCKS = YES;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(SRCROOT)..\node_modules\neact-native-fbsdkiosRCTFBSDK/**",
-					"$(SRCROOT)..\node_modules\neact-native-google-analytics-bridgeiosRCTGoogleAnalyticsBridge/**",
-					"$(SRCROOT)..\node_modules\neact-native-onesignaliosRCTOneSignal/**",
-					"$(SRCROOT)..\node_modules\neact-native-vector-iconsRNVectorIconsManager",
-					"$(SRCROOT)..\node_modules\neact-native-mapslibios/**",
+					"$(SRCROOT)..",
+					ode_modules,
+					"eact-native-fbsdkiosRCTFBSDK/**",
+					"$(SRCROOT)..",
+					ode_modules,
+					"eact-native-onesignaliosRCTOneSignal/**",
+					"$(SRCROOT)..",
+					ode_modules,
+					"eact-native-vector-iconsRNVectorIconsManager",
+					"$(SRCROOT)..",
+					ode_modules,
+					"eact-native-mapslibios/**",
 				);
 				INFOPLIST_FILE = "DemoStadium-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1600,11 +1583,18 @@
 				GCC_NO_COMMON_BLOCKS = YES;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(SRCROOT)..\node_modules\neact-native-fbsdkiosRCTFBSDK/**",
-					"$(SRCROOT)..\node_modules\neact-native-google-analytics-bridgeiosRCTGoogleAnalyticsBridge/**",
-					"$(SRCROOT)..\node_modules\neact-native-onesignaliosRCTOneSignal/**",
-					"$(SRCROOT)..\node_modules\neact-native-vector-iconsRNVectorIconsManager",
-					"$(SRCROOT)..\node_modules\neact-native-mapslibios/**",
+					"$(SRCROOT)..",
+					ode_modules,
+					"eact-native-fbsdkiosRCTFBSDK/**",
+					"$(SRCROOT)..",
+					ode_modules,
+					"eact-native-onesignaliosRCTOneSignal/**",
+					"$(SRCROOT)..",
+					ode_modules,
+					"eact-native-vector-iconsRNVectorIconsManager",
+					"$(SRCROOT)..",
+					ode_modules,
+					"eact-native-mapslibios/**",
 				);
 				INFOPLIST_FILE = "DemoStadium-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

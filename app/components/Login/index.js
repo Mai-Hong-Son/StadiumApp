@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { LoginManager } from 'react-native-fbsdk';
-import { View, Text, BackHandler, Image } from 'react-native';
+import { LoginManager, AccessToken } from 'react-native-fbsdk';
+import { View, Text, BackHandler, Image, TouchableHighlight, StyleSheet} from 'react-native';
 import OneSignal from 'react-native-onesignal';
 
 const backgroundStadium = require('./../../../assets/images/backgroundStadium.jpg');
@@ -14,6 +14,7 @@ export default class LoginView extends Component {
     }
 
     this.handleBackButtonClick = this.handleBackButtonClick.bind(this);
+    this.onLoginFb = this.onLoginFb.bind(this);
   }
 
   componentDidMount() {
@@ -72,15 +73,55 @@ export default class LoginView extends Component {
     return false;
   }
 
+  onLoginFb() {
+    LoginManager.logInWithReadPermissions(['public_profile']).then(
+      result => {
+        if (result.isCancelled) {
+          alert('Login cancelled');
+        } else {
+          this.props.navigation.navigate('HomeStack');
+          this.props.checkLogin();
+        }
+      },
+      error => {
+        alert('Login fail with error: ' + error);
+      }
+    );
+  }
+
   render() {
     return (
       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center'}}>
         <Image
-        style={{ flex: 1, resizeMode: 'cover', justifyContent: 'center', alignItems: 'center'}}
+        style={{
+          flex: 1,
+          resizeMode: 'cover',
+          justifyContent: 'center',
+          alignItems: 'center',
+          position: 'absolute'}}
         source={backgroundStadium}
         blurRadius={0.2} />
+        
+        <TouchableHighlight
+        style = {styles.button}
+        onPress = {this.onLoginFb}>
+          <Text style={{ color: '#fff', fontWeight: 'bold' }}>
+          {"ĐĂNG NHẬP VỚI FACEBOOK"}
+          </Text>
+        </TouchableHighlight>
       </View>
       
     );
   }
 }
+
+const styles = StyleSheet.create({
+  button: {
+    alignItems: 'center',
+    backgroundColor: '#5249D5',
+    width: '90%',
+    height: 40,
+    borderRadius: 4,
+    justifyContent: 'center'
+  }
+})

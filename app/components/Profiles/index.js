@@ -5,14 +5,20 @@ import {
   Text,
   View
 } from 'react-native';
-import { LoginButton, AccessToken } from 'react-native-fbsdk';
 
 export default class Profiles extends Component {
+
+  constructor(props){
+    super(props);
+  }
+
   render() {
     return (
       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-          <LoginButton
-            publishPermissions={["publish_actions"]}/>
+        <View style={{ flex: 1, backgroundColor: '#32CD32', width: '100%'}}>
+        </View>
+        <View style={{ flex: 2 }}>
+        </View>
       </View>
     );
   }

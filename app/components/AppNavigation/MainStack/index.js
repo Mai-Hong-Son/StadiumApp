@@ -1,5 +1,5 @@
-// import { Image } from 'react-native';
-import { TabNavigator, StackNavigator } from 'react-navigation';
+import React from 'react';
+import { TabNavigator, StackNavigator, TabBarBottom } from 'react-navigation';
 import Login from '../../Login/withConnect';
 import Home from '../../Home/index';
 import Maps from '../../Maps/index';
@@ -9,6 +9,7 @@ import Sessions from '../../Sessions/index';
 import SessionDetail from '../../SessionDetail/index';
 import ConfirmSession from '../../ConfirmSession/index';
 import { OverallSchedulesTabs } from './WeekdayTabs';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 const StadiumStack = StackNavigator({
     Stadiums: {
@@ -80,21 +81,42 @@ const RootTabs = TabNavigator({
         screen: Profiles,
     },
 },{
+    navigationOptions:({ navigation }) => ({
+        tabBarIcon: ({ focused, tintColor }) => {
+            const { routeName } = navigation.state;
+            let iconName;
+            if (routeName === 'Home') {
+              iconName = `ios-home${focused ? '' : '-outline'}`;
+            } else if (routeName === 'StadiumLT') {
+              iconName = `ios-football${focused ? '' : '-outline'}`;
+            } else if (routeName === 'Maps') {
+                iconName = `ios-map${focused ? '' : '-outline'}`;
+            } else if (routeName === 'Profile') {
+                iconName = `ios-person${focused ? '' : '-outline'}`;
+            }
+ 
+            return (<Icon name={iconName} size={25} color={tintColor} />);
+        },
+    }),
+    tabBarComponent: TabBarBottom,
     tabBarPosition: 'bottom',
-    // animationEnabled: true,
+    animationEnabled: false,
+    swipeEnabled: false,
     tabBarOptions: {
-      activeTintColor: 'pink',
+      activeTintColor: '#D91283',
+      inactiveTintColor: '#fff',
       style: {
           backgroundColor: '#32CD32',
       },
       showIcon: true,
     },
+    lazy: true
 });
 
 const MainStack = StackNavigator({
-    // Login: {
-    //     screen: Login,
-    // },
+    Login: {
+        screen: Login,
+    },
     HomeStack: {
         screen: RootTabs,
     },
