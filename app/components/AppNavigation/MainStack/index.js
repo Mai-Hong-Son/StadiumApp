@@ -4,7 +4,7 @@ import Login from '../../Login/withConnect';
 import Home from '../../Home/index';
 import Maps from '../../Maps/index';
 import Profiles from '../../Profiles/index';
-import Stadiums from '../../Stadiums/index';
+import Stadiums from '../../Stadiums/withConnect';
 import Sessions from '../../Sessions/index';
 import SessionDetail from '../../SessionDetail/index';
 import ConfirmSession from '../../ConfirmSession/index';

@@ -2,8 +2,9 @@ import { applyMiddleware, combineReducers, compose, createStore } from 'redux';
 import { persistStore, persistCombineReducers } from 'redux-persist';
 import storage from 'redux-persist/es/storage';
 import reduxThunk from 'redux-thunk';
+import axiosMiddleware from './axiosMiddleware';
 
-import { checkLogin } from './../reducers/index';
+import { checkLogin, stadiums } from './../reducers/index';
 
 const config = {
   key: 'root',
@@ -12,13 +13,13 @@ const config = {
 
 export default function buildStore() {
   const reducers = persistCombineReducers(config, {
-    checkLogin,
+    checkLogin, stadiums
   });
 
   const store = createStore(
     reducers,
     compose(
-      applyMiddleware(reduxThunk),
+      applyMiddleware(reduxThunk, axiosMiddleware),
     //   autoRehydrate({ log: FEATURES.REDUX_PERSIST_LOGGING }),
     )
   );

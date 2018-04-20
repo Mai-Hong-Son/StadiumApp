@@ -10,17 +10,17 @@ import {
 export default class ContentRow extends Component {
 
   render() {
-    const { item: { name, short_address, images} } = this.props;
+    const { item: { name, address }, image } = this.props;
 
     return (
     <View style={styles.container}>
         <View style={styles.containerThumbnail}>
-            <Image source={{ uri: images }} style={styles.thumbnail} />
+            <Image source={{ uri: image }} style={styles.thumbnail} />
         </View >
         <View style={styles.description}>
             <View style={styles.contentContainer}>
                 <Text numberOfLines={2} style={styles.title}>{name}</Text>
-                <Text style={styles.auth}>{short_address}</Text>
+                <Text style={styles.auth}>{address}</Text>
             </View>
         </View>
     </View>
