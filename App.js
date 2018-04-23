@@ -5,7 +5,7 @@
  */
 
 import React, { Component } from 'react';
-import AppNavigation from './app/components/AppNavigation/index';
+import { AppWithNavigationState } from './app/components/AppNavigation/withConnect';
 import buildStore from './redux/stores';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/es/integration/react';
@@ -22,7 +22,7 @@ export default class App extends Component {
       <Provider store={store}>
         <PersistGate
         persistor={persistor}>
-          <AppNavigation/>
+          <AppWithNavigationState/>
         </PersistGate>
       </Provider>
     );

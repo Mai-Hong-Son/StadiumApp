@@ -113,7 +113,7 @@ const RootTabs = TabNavigator({
     lazy: true
 });
 
-const MainStack = StackNavigator({
+export const MainStack = StackNavigator({
     Login: {
         screen: Login,
     },

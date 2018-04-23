@@ -1,19 +1,19 @@
 
-function listStadium() {
+function listStadium(page, perPage) {
     return {
         type: 'GET_ALL_STADIUM',
         payload: {
             request:{
-              url:'/stadiums'
+              url:`/stadiums?page=${page}&perPage=${perPage}`
             }
         }
     }
 }
 
-export function getAllStadium() {
+export function getAllStadium(page, perPage) {
     return dispatch => {
         try{
-            dispatch(listStadium());
+            dispatch(listStadium(page,perPage));
         }
         catch(err) {
             console.log(err)
