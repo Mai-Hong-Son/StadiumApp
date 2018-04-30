@@ -4,20 +4,22 @@ import storage from 'redux-persist/es/storage';
 import reduxThunk from 'redux-thunk';
 import axiosMiddleware from './axiosMiddleware';
 
-import { checkLogin, stadiums } from './../reducers/index';
+import { checkLogin, stadiums, districts, stadiumsByDistrict } from './../reducers/index';
 import { navReducer } from './../../app/components/AppNavigation/reducer';
 
 const config = {
   key: 'root',
   storage,
-  blacklist: ['stadiums']
+  blacklist: ['stadiums', 'navReducer', 'stadiumsByDistrict']
 }
 
 export default function buildStore() {
   const reducers = persistCombineReducers(config, {
     checkLogin,
     stadiums,
-    navReducer
+    districts,
+    navReducer,
+    stadiumsByDistrict
   });
 
   const store = createStore(

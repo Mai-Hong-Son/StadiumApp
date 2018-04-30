@@ -24,14 +24,14 @@ const StadiumStack = StackNavigator({
             shadowColor: 'transparent',
         },
         navigationOptions: {
-            title: 'Session List',
+            // title: '',
             headerStyle: {
                 backgroundColor: '#32CD32',
                 elevation: 0, 
             },
             headerTitleStyle: {
                 color: '#ffffff',
-                marginLeft: '27%'
+                marginLeft: '25%'
             },
             headerTintColor: '#ffffff'
         }

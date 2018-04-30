@@ -13,6 +13,9 @@ const mySessions = require('../../../redux/fakeData/sessions');
 const stadiums = require('../../../redux/fakeData/stadiums');
 
 export default class Sessions extends Component {
+    static navigationOptions = ({ navigation: { state: { params: { title } } } }) => ({
+        title,
+    });
 
     get sessionsData() {
         const { state: { params: { stadiumId } } } = this.props.navigation;

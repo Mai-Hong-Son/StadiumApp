@@ -19,9 +19,9 @@ export default class AppNavigation extends React.Component {
     render() {
       return (
         <MainStack navigation={addNavigationHelpers({
-          dispatch: this.props.dispatch,
-          state: this.props.nav,
-          addListener,
+        dispatch: this.props.dispatch,
+        state: this.props.nav,
+        addListener,
         })} />
       );
     }

@@ -1,5 +1,6 @@
 import { checkLogin } from './accessState/index';
-import { stadiums } from './serviceApi/stadiumReducer';
+import { stadiums, stadiumsByDistrict } from './serviceApi/stadiumReducer';
+import { districts } from './serviceApi/districtReducer';
 
 
-export { checkLogin, stadiums };
+export { checkLogin, stadiums, districts, stadiumsByDistrict };

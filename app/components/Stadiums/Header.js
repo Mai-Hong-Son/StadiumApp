@@ -8,17 +8,33 @@ import {
   TouchableOpacity,
   TextInput
 } from 'react-native';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+
+import ModalDropdown from 'react-native-modal-dropdown';
 
 export default class Header extends Component {
+  constructor(props){
+    super(props)
+
+    this.state = {
+      districtName: []
+    }
+  }
+
+  componentDidMount() {
+    const { data } = this.props.districts
+    data.forEach(element => {
+      this.state.districtName.push(element.name)
+    });
+  }
+
   render() {
     return (
-    <View style= {styles.container}>
+    <View style= {styles.containerHeader}>
       <View style= {styles.stylefilter}>
-        {/* <TouchableOpacity containerStyle={styles.Buttonfilter} onPress={() => null} >
+        {/* <TouchableOpacity containerStyle={styles.Buttonfilter} onPress={() => this.props.openFilter()} >
           <View style= {styles.containerFilter}>
             <MaterialCommunityIcons color={'#32CD32'} name="filter-outline" size={25} style={styles.iconFilter} />
-            <Text>aaaaa</Text>
+            <Text style= {styles.textFilter}>{'Lọc theo khu vực'}</Text>
           </View>
         </TouchableOpacity> */}
         <TextInput
@@ -26,6 +42,23 @@ export default class Header extends Component {
         underlineColorAndroid='transparent'
         placeholder='Search for stadiums'
         placeholderTextColor='#6e6e6e'/>
+
+        <ModalDropdown
+        style={styles.menuDropdown}
+        dropdownStyle={{
+          width: 129,
+          borderRadius: 4,
+        }}
+        dropdownTextHighlightStyle={{
+          color: '#32CD32'
+        }}
+        textStyle={{
+          textAlign: 'center',
+          color: '#FF1493'
+        }}
+        options={this.state.districtName}
+        defaultValue={'Chọn khu vực...'}
+        />
       </View>
     </View>
     );
@@ -33,10 +66,10 @@ export default class Header extends Component {
 }
 
 const styles = StyleSheet.create({
-    container: {
+    containerHeader: {
         backgroundColor: '#32CD32',
         justifyContent: 'center',
-        height: 90,
+        height: 130,
     },
     stylefilter: {
         flex: 1,
@@ -59,17 +92,30 @@ const styles = StyleSheet.create({
         borderColor: 'gray',
         justifyContent: 'center',
         alignSelf: 'center',
-        marginBottom: 15,
-        marginTop: 40,
-        paddingTop: 5,
-        paddingLeft: 10
+        marginBottom: 5,
+        marginTop: 30,
+        paddingTop: 8,
+        paddingLeft: 10,
+        opacity: 0.7
     },
     textFilter: {
         flex:8,
         alignItems: 'flex-start',
         fontSize: 13,
-        color: 'white',
+        color: 'black',
         // marginLeft: 5,
         marginTop: 5,
     },
+    menuDropdown: {
+      height: 30,
+      width: 130,
+      backgroundColor: '#E0FFFF',
+      opacity: 0.7,
+      alignSelf: 'flex-start',
+      marginLeft: 16,
+      borderRadius: 4,
+      justifyContent: 'center',
+      borderColor: 'gray',
+      borderWidth: 1,
+    }
 });

@@ -1,19 +1,20 @@
 import { connect } from 'react-redux';
 import StadiumView from './index';
-import { getStadium } from '../../../redux/actions/index';
+import { getStadium, getDistrict } from '../../../redux/actions/index';
 
 function mapStateToProps(state) {
-    console.warn(state)
-    const { stadiums } = state
+    const { stadiums, districts, stadiumsByDistrict } = state
 
     return {
-        stadiums
+        stadiums, districts, stadiumsByDistrict
     };
 }
 
 function mapDispatchToProps(dispatch) {
     return {
         getAllStadium: (page, perPage) => dispatch(getStadium.getAllStadium(page, perPage)),
+        getAllDistrict: () => dispatch(getDistrict.getAllDistrict()),
+        listStadiumByDistrict: (page, perPage, districtId) => dispatch(getStadium.getAllStadiumByDistrict(page, perPage, districtId))
     };
 }
 
