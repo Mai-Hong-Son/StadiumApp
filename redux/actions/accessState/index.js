@@ -1,8 +1,9 @@
 import { LOGIN_TYPES } from './../../constants';
 
-function loginSuccess() {
+function loginSuccess(userId) {
     return {
-        type: LOGIN_TYPES.LOGIN_SUCCESS
+        type: LOGIN_TYPES.LOGIN_SUCCESS,
+        payload: userId
     }
 }
 
@@ -12,10 +13,10 @@ function loginError() {
     }
 }
 
-export function checkLogin() {
+export function checkLogin(userId) {
     return dispatch => {
         try{
-            dispatch(loginSuccess());
+            dispatch(loginSuccess(userId));
         }
         catch(err) {
             dispatch(loginError());

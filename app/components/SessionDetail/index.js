@@ -20,26 +20,25 @@ export default class SessionDetail extends Component {
 
   render() {
     const { state: { params: { session, stadium } } } = this.props.navigation;
-    const { images, duration, startMoment: time, price } = session;
-    const { name, short_address } = stadium[0];
+    const { duration, startedAt: time, price } = session;
+    const { name, address, thumbnail } = stadium;
 
-    const startHour = moment(time, 'HH').format('HH:mm');
-    const weekDay = _.capitalize(moment(time, 'DD').format('dddd'));
-    const date =  moment(time, 'MM').format('MM/DD');
+    const startHour = moment(time).format('HH:mm');
+    const weekDay = _.capitalize(moment(time).format('dddd'));
+    const date =  moment(time).format('MM/DD');
 
     return (
       <View style={styles.container}>
-        <Image source={{ uri: images }} style={styles.thumbnail}/>
+        <Image source={{ uri: thumbnail[0] }} style={styles.thumbnail}/>
         <View style={{ width: '90%', marginTop: 15 }}>
             <Text style={styles.name}>{name}</Text>
-            <Text style={styles.info}>{short_address}</Text>
+            <Text style={styles.info}>{address}</Text>
             <Text style={styles.info}>{'Price: ' + price + ' ' + 'VND'}</Text>
             <Text style={styles.info}>{'Contact: 01682396571'}</Text>
             <Text style={styles.info}>
                 <Icon name='md-calendar' size={15} color="#6e6e6e"  /> { startHour + ' - ' + weekDay + '(' + date + ')' + '  '}
                 <Icon name='md-clock' size={15} color="#6e6e6e"  /> {'Duration' + ' - ' + duration + ' min'}
             </Text>
-            <Text style={styles.info}>{'Empty: (4/4)'}</Text>
             <TouchableOpacity onPress={ () => {
               Alert.alert(
                 'Confirm',

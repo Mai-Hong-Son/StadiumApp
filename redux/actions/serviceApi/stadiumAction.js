@@ -1,4 +1,20 @@
 
+function allStadium() {
+    return {
+        type: 'GET_STADIUMS',
+        payload: {
+            request:{
+              url:`/stadiums`,
+              headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+              },
+            }
+        }
+    }
+}
+
+
 function listStadium(page, perPage) {
     return {
         type: 'GET_ALL_STADIUM',
@@ -27,6 +43,17 @@ function listStadiumByDistrict(page, perPage, districtId) {
                 'Content-Type': 'application/json',
               },
             }
+        }
+    }
+}
+
+export function getStadiums() {
+    return dispatch => {
+        try{
+            dispatch(allStadium());
+        }
+        catch(err) {
+            console.log(err)
         }
     }
 }

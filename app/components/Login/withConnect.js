@@ -1,18 +1,19 @@
 import { connect } from 'react-redux';
 import LoginView from './index';
-import { accessState } from '../../../redux/actions/index';
+import { accessState, handleUser } from '../../../redux/actions/index';
 
 function mapStateToProps(state) {
-    const { isLogin } = state.checkLogin;
+    const { isLogin, userId } = state.checkLogin;
 
     return {
-        isLogin
+        isLogin, userId
     };
 }
 
 function mapDispatchToProps(dispatch) {
     return {
-        checkLogin: () => dispatch(accessState.checkLogin()),
+        checkLogin: (userId) => dispatch(accessState.checkLogin(userId)),
+        createUser: (user) => dispatch(handleUser.createNewUser(user))
     };
 }
 

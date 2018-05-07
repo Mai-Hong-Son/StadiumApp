@@ -27,4 +27,14 @@ export const stadiumsByDistrict = (state = DEFAULT_STATES, action) => {
     }
     return state;
 }
+
+export const allStadiums = (state = DEFAULT_STATES, action) => {
+    if (_.endsWith(action.type, ':ERROR') && _.startsWith(action.type, 'GET_STADIUMS')) {
+        return {...state};
+    }
+    if (_.endsWith(action.type, ':SUCCESS') && _.startsWith(action.type, 'GET_STADIUMS')) {
+        return { ...state, data: [...state.data,...action.payload.data], status: true, loading: false };
+    }
+    return state;
+}
     

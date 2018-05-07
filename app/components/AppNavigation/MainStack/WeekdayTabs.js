@@ -9,7 +9,7 @@ import moment from 'moment';
 import _ from 'lodash';
 
 // Components
-import Sessions from './../../Sessions/index';
+import Sessions from './../../Sessions/withConnect';
 
 const TABBAR_TOP_STYLES = {
     container: {

@@ -8,24 +8,24 @@ import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import _ from 'lodash';
 
 export default function DetailInfo({ session, stadium, variant }) {
+  // console.warn(session);
   const {
-    is_reserved: reserved,
     price,
     name,
-    reservationCode,
   } = session;
-
+  
   const {
-      name: stadiumName,
-      short_address
-  } = stadium[0]
+    name: stadiumName,
+    address
+  } = stadium
 
   return (
     <View style={styles.container}>
       <View>
         <Text style={styles.name}>{name}</Text>
         <Text style={styles.info}>{stadiumName}</Text>
-        <Text style={styles.infoPrice}>{price + ' ' + 'VNĐ'}</Text>
+        <Text style={styles.info}>{'Empty: (4/4)'}</Text>
+        <Text style={styles.infoPrice}>{price + '.000' + ' ' + 'VNĐ'}</Text>
       </View>
       {/* <View style={{ width: '30%', justifyContent: 'flex-end', alignItems: 'flex-end' }}>
         <View style={{ width: '100%', height: 30, backgroundColor: 'red', borderRadius: 4, alignItems: 'center', justifyContent: 'center' }}>

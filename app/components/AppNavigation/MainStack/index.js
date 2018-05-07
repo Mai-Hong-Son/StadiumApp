@@ -5,7 +5,8 @@ import Home from '../../Home/index';
 import Maps from '../../Maps/index';
 import Profiles from '../../Profiles/index';
 import Stadiums from '../../Stadiums/withConnect';
-import Sessions from '../../Sessions/index';
+import StadiumDetail from '../../StadiumDetail/withConnect';
+import Sessions from '../../Sessions/withConnect';
 import SessionDetail from '../../SessionDetail/index';
 import ConfirmSession from '../../ConfirmSession/index';
 import { OverallSchedulesTabs } from './WeekdayTabs';
@@ -18,12 +19,29 @@ const StadiumStack = StackNavigator({
             header: null,
         }
     },
+    StadiumDetail: {
+        screen: StadiumDetail,
+        navigationOptions: {
+            tabBarVisible: false,
+            title: null,
+            headerStyle: {
+                backgroundColor: '#32CD32',
+                // elevation: 0, 
+                // opacity: 0
+            },
+            headerBackTitleStyle : {
+                opacity: 1
+            },
+            headerTintColor: '#ffffff',
+        }
+    },
     Sessions: {
         screen: OverallSchedulesTabs,
         cardStyle: {
             shadowColor: 'transparent',
         },
         navigationOptions: {
+            tabBarVisible: false,
             // title: '',
             headerStyle: {
                 backgroundColor: '#32CD32',
@@ -39,6 +57,7 @@ const StadiumStack = StackNavigator({
     SessionDetail: {
         screen: SessionDetail,
         navigationOptions: {
+            tabBarVisible: false,
             title: null,
             headerStyle: {
                 backgroundColor: '#32CD32',
@@ -54,6 +73,7 @@ const StadiumStack = StackNavigator({
     ConfirmSession: {
         screen: ConfirmSession,
         navigationOptions: {
+            tabBarVisible: false,
             title: null,
             headerStyle: {
                 backgroundColor: '#32CD32',

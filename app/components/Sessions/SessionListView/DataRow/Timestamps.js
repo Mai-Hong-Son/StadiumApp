@@ -33,7 +33,7 @@ function formatText(template, ...args) {
 }
 
 export default function Timestamps({ color, duration, time, variant }) {
-  const startHour = moment(time, 'HH').format('HH:mm');
+  const startHour = moment(time).format('HH:mm');
   const weekDay = _.capitalize(moment(time, 'dddd').format('dddd'));
   const date =  moment(time, 'MM/DD').format('MM/DD');
 

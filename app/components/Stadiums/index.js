@@ -13,8 +13,6 @@ import LoadingPlaceholder from './../Reusables/Loadings/LoadingPlaceholder';
 import _ from 'lodash';
 import ModalDropdown from 'react-native-modal-dropdown';
 
-const stadiums = require('../../../redux/fakeData/stadiums');
-
 export default class StadiumView extends Component {
 
   constructor(props){
@@ -79,8 +77,8 @@ export default class StadiumView extends Component {
   }
 
   renderItem = ({ item }) => (
-    <TouchableOpacity onPress={ () => this.props.navigation.navigate('Sessions', { stadiumId: item._id, title: item.name }) }>
-      <ContentRow image={stadiums.result[0].images} item={item}/>
+    <TouchableOpacity onPress={ () => this.props.navigation.navigate('StadiumDetail', { stadiumId: item._id, title: item.name }) }>
+      <ContentRow item={item}/>
     </TouchableOpacity>
   );
 

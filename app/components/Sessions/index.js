@@ -9,24 +9,41 @@ import {
 import _ from 'lodash';
 import SessionListView from './SessionListView/index';
 
-const mySessions = require('../../../redux/fakeData/sessions');
-const stadiums = require('../../../redux/fakeData/stadiums');
+export default class SessionsView extends Component {
+    static navigationOptions = ({ navigation }) => {
+        const { params } = navigation.state;
+        
+        return {
+          title: params ? params.title : 'A Nested Details Screen',
+        }
+    };
 
-export default class Sessions extends Component {
-    static navigationOptions = ({ navigation: { state: { params: { title } } } }) => ({
-        title,
-    });
+    constructor(props) {
+        super(props);
+    }
+
+    componentDidMount() {
+        const { state: { params: { stadiumId } } } = this.props.navigation;
+        const { dateId } = this.props;
+
+        this.props.getAllStadium();
+        this.props.getAllSession(stadiumId, dateId)
+    }
 
     get sessionsData() {
         const { state: { params: { stadiumId } } } = this.props.navigation;
-        const { result } = mySessions;
-        return _.filter(result, { stadiumid: stadiumId });
+        const { sessions: { data }, tabId, variant } = this.props;
+        switch (variant) {
+            case 'Sessions': return data[tabId];
+            default: return [];
+        }
     }
 
     get stadiumsData() {
         const { state: { params: { stadiumId } } } = this.props.navigation;
-        const { result } = stadiums;
-        return _.filter(result, { id: stadiumId });
+        const { data } = this.props.allStadiums;
+
+        return _.filter(data, { _id: stadiumId });
     }
 
     onViewSchedules = () => {
@@ -36,12 +53,15 @@ export default class Sessions extends Component {
 
     render() {
         const { tabId, variant, navigation: { navigate } } = this.props;
+
+        if(this.stadiumsData.length === 0) return null;
+
         return (
         <View style={styles.container}>
             <SessionListView
             onViewSchedules={this.onViewSchedules}
             sessionsData={this.sessionsData}
-            stadiumsData={this.stadiumsData}
+            stadiumsData={this.stadiumsData[0]}
             tabId={tabId}
             variant={variant}
             navigate={navigate}/>

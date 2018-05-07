@@ -1532,6 +1532,7 @@
 					"-ObjC",
 					"-lc++",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.wefit.app.stg;
 				PRODUCT_NAME = DemoStadium;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -1572,6 +1573,7 @@
 					"-ObjC",
 					"-lc++",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.wefit.app.stg;
 				PRODUCT_NAME = DemoStadium;
 				VERSIONING_SYSTEM = "apple-generic";
 			};

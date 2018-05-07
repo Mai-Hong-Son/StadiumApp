@@ -54,6 +54,7 @@ export default class SessionListView extends Component {
 
     renderItem = ({item}) => {
         const { tabId, variant, stadiumsData, navigate } = this.props;
+        // console.warn(stadiumsData)
 
         return (
             <DataRow
@@ -85,7 +86,7 @@ export default class SessionListView extends Component {
             <FlatList
             data={sessionsData}
             renderItem={this.renderItem}
-            keyExtractor={({ id }) => id}
+            keyExtractor={({ _id }) => _id}
             />
         </View>
         );

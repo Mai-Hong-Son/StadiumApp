@@ -12,14 +12,14 @@ import DetailInfo from './DetailInfo';
 export default class DataRow extends Component {
   render() {
     const { session, variant, stadium } = this.props;
-    const { duration, startMoment } = session;
+    const { duration, startedAt } = session;
 
     return (
     <TouchableOpacity onPress={() => this.props.navigate('SessionDetail', { session: session, stadium: stadium })}>
       <View style={styles.container}>
         <Icon name='md-football' size={30} color="#900"  />
         <View style={styles.content}>
-          <Timestamps color={'black'} duration={duration} time={startMoment} variant={variant} />
+          <Timestamps color={'black'} duration={duration} time={startedAt} variant={variant} />
           <DetailInfo session={session} stadium={stadium} variant={variant} />
         </View>
       </View>

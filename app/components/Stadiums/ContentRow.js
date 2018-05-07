@@ -6,26 +6,56 @@ import {
   Image,
   Text
 } from 'react-native';
+import StarRating from 'react-native-star-rating';
+import _ from 'lodash';
 
 export default class ContentRow extends Component {
+    constructor(props) {
+        super(props);
 
-  render() {
-    const { item: { name, address }, image } = this.props;
+        this.state={
+            ratingScore: 0
+        }
+    }
 
-    return (
-    <View style={styles.container}>
-        <View style={styles.containerThumbnail}>
-            <Image source={{ uri: image }} style={styles.thumbnail} />
-        </View >
-        <View style={styles.description}>
-            <View style={styles.contentContainer}>
-                <Text numberOfLines={2} style={styles.title}>{name}</Text>
-                <Text style={styles.auth}>{address}</Text>
+    componentDidMount() {
+        const { item: { rates } } = this.props;
+
+        if(rates.length !== 0 || rates.length !== undefined) {
+            _.map(rates, (item) => {
+                this.setState({
+                    ratingScore: (this.state.ratingScore + item.score)/rates.length
+                })
+            })
+        }
+    }
+
+    render() {
+        const { item: { name, address, thumbnail } } = this.props;
+
+        return (
+        <View style={styles.container}>
+            <View style={styles.containerThumbnail}>
+                <Image source={{ uri: this.props.item.thumbnail[0].url }} style={styles.thumbnail} />
+            </View >
+            <View style={styles.description}>
+                <View style={styles.contentContainer}>
+                    <Text numberOfLines={2} style={styles.title}>{name}</Text>
+                    <Text style={styles.auth}>{address}</Text>
+                </View>
+                <StarRating
+                    disabled={false}
+                    maxStars={5}
+                    rating={this.state.ratingScore}
+                    starSize={18}
+                    containerStyle={{ width: 100 }}
+                    selectedStar={() => null}
+                    fullStarColor='#FF9800'
+                />
             </View>
         </View>
-    </View>
-    );
-  }
+        );
+    }
 }
 
 const styles = StyleSheet.create({
@@ -57,8 +87,8 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
     },
     contentContainer: {
-        height: 110,
-        width: 200, 
+        height: 95,
+        width: 200,
     },
     auth: {
         color: '#666',

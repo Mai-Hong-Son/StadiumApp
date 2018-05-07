@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { LoginManager, AccessToken } from 'react-native-fbsdk';
+import { LoginManager, AccessToken, GraphRequest, GraphRequestManager } from 'react-native-fbsdk';
 import { View, Text, BackHandler, Image, TouchableHighlight, StyleSheet} from 'react-native';
 import OneSignal from 'react-native-onesignal';
 
@@ -11,6 +11,7 @@ export default class LoginView extends Component {
 
     this.state={
       userId: null,
+      userData: {}
     }
 
     this.handleBackButtonClick = this.handleBackButtonClick.bind(this);
@@ -73,14 +74,38 @@ export default class LoginView extends Component {
     return false;
   }
 
+  initUser(token) {
+    const { userData } = this.state;
+    fetch('https://graph.facebook.com/v2.11/me?fields=email,name,picture,birthday,gender&access_token=' + token)
+    .then((response) => response.json())
+    .then((json) => {
+      userData.name = json.name;
+      userData.userId = json.id;
+      userData.avatar = json.picture.data.url;
+      userData.gender = json.gender;
+      userData.email = json.email;
+      userData.birthday = json.birthday;
+      userData.isActive = true
+
+      this.props.navigation.navigate('HomeStack');
+      this.props.checkLogin(userData.userId);
+      this.props.createUser(userData)
+    })
+    .catch(() => {
+      console.log('ERROR GETTING DATA FROM FACEBOOK')
+    })
+  }
+
   onLoginFb() {
-    LoginManager.logInWithReadPermissions(['public_profile']).then(
+    LoginManager.logInWithReadPermissions(['public_profile', 'email','user_location','user_birthday']).then(
       result => {
         if (result.isCancelled) {
           alert('Login cancelled');
         } else {
-          this.props.navigation.navigate('HomeStack');
-          this.props.checkLogin();
+          AccessToken.getCurrentAccessToken().then((data) => {
+            const { accessToken } = data
+            this.initUser(accessToken)
+          })
         }
       },
       error => {
