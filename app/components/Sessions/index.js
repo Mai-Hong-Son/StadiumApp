@@ -54,7 +54,7 @@ export default class SessionsView extends Component {
     render() {
         const { tabId, variant, navigation: { navigate } } = this.props;
 
-        if(this.stadiumsData.length === 0) return null;
+        if(this.stadiumsData.length === 0 || this.sessionsData === undefined) return null;
 
         return (
         <View style={styles.container}>

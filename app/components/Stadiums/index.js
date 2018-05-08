@@ -27,7 +27,7 @@ export default class StadiumView extends Component {
       isSetData: false,
       isloadData: false,
       isloadStadiumByDisttrict: false,
-      idDistrictTemp: null
+      isSearch:false
     }
 
   }
@@ -38,10 +38,10 @@ export default class StadiumView extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    const { page, districtName, isSetData, isloadData, isloadStadiumByDisttrict } = this.state
+    const { page, districtName, isSetData, isloadData, isloadStadiumByDisttrict, isSearch } = this.state
     const { data, status } = nextProps.districts
     
-    if( status === true && isSetData === false) {
+    if( status === true && isSetData === false && !isSearch) {
       districtName.push("Tất cả");
       data.forEach(element => {
         districtName.push(element.name)
@@ -52,14 +52,14 @@ export default class StadiumView extends Component {
       })
     }
 
-    if( nextProps.stadiums.status === true && isloadData === false) {
+    if( nextProps.stadiums.status === true && isloadData === false && !isSearch) {
       this.setState({
         stadiumsData: nextProps.stadiums.data,
         isloadData: true
       })
     }
 
-    if(isloadStadiumByDisttrict){
+    if(isloadStadiumByDisttrict && !isSearch){
       this.setState({
         stadiumsData: nextProps.stadiumsByDistrict.data,
       })
@@ -83,17 +83,14 @@ export default class StadiumView extends Component {
   );
 
   onRefresh = () => {
-    if(this.state.isloadStadiumByDisttrict === true) {
-      this.props.listStadiumByDistrict(1, this.state.perPage, this.state.idDistrict);
-    } else {
-      this.props.getAllStadium(1, this.state.perPage);
-    }
+    this.props.getAllStadium(1, this.state.perPage);
     this.setState({
       page: 1,
       isloadData: false,
       isloadStadiumByDisttrict: false,
       isSetData: false,
       loadingFooter: false,
+      isSearch: false
     });
   }
 
@@ -111,7 +108,7 @@ export default class StadiumView extends Component {
 
   onSelectDropdown = (index, value) => {
     if(value === "Tất cả") {
-      this.onRefresh()
+      this.onRefresh();
     } else {
       const idDistrict = _.find(this.props.districts.data, (item) => {
         return item.name === value;
@@ -128,17 +125,10 @@ export default class StadiumView extends Component {
 
   onChangeText = (textChange) => {
     if(textChange != ""){
-      const arrayTemp = []
-
-      this.state.stadiumsData.forEach(element => {
-        if(_.includes(element.name, textChange)) {
-          arrayTemp.push(element)
-        }
-      });
-
       this.setState({
         loadingFooter: false,
-        stadiumsData: arrayTemp,
+        isSearch: true,
+        stadiumsData: _.filter(this.state.stadiumsData, item => _.includes(item.name,textChange)),
       })
     } else {
       this.onRefresh()

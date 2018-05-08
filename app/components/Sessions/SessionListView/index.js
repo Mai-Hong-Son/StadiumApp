@@ -35,6 +35,7 @@ export default class SessionListView extends Component {
 
     componentDidMount() {
         const { sessionsData } = this.props;
+
         this.toggleTimeline(!_.isEmpty(sessionsData));
     }
 
@@ -54,7 +55,6 @@ export default class SessionListView extends Component {
 
     renderItem = ({item}) => {
         const { tabId, variant, stadiumsData, navigate } = this.props;
-        // console.warn(stadiumsData)
 
         return (
             <DataRow

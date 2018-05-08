@@ -81,6 +81,7 @@ export default class LoginView extends Component {
     .then((json) => {
       userData.name = json.name;
       userData.userId = json.id;
+      userData.tokenId = token;
       userData.avatar = json.picture.data.url;
       userData.gender = json.gender;
       userData.email = json.email;

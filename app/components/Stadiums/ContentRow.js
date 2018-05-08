@@ -36,7 +36,7 @@ export default class ContentRow extends Component {
         return (
         <View style={styles.container}>
             <View style={styles.containerThumbnail}>
-                <Image source={{ uri: this.props.item.thumbnail[0].url }} style={styles.thumbnail} />
+                <Image source={{ uri: thumbnail[0]===undefined?'':thumbnail[0].url }} style={styles.thumbnail} />
             </View >
             <View style={styles.description}>
                 <View style={styles.contentContainer}>

@@ -12,8 +12,7 @@ import ParallaxScrollView from 'react-native-parallax-scroll-view';
 import Icon from 'react-native-vector-icons/Ionicons';
 import moment from 'moment';
 import _ from 'lodash';
-import MapView from 'react-native-maps';
-import { Marker } from 'react-native-maps';
+import MapView, { Marker } from 'react-native-maps';
 
 const window = Dimensions.get('window');
 const torressImage = require('./../../../assets/images/torress.png');
@@ -24,20 +23,9 @@ export default class StadiumDetailView extends Component {
     super(props);
 
     this.state={
-      initialRegion: {
-        latitude: 21.036237,
-        longitude: 105.790583,
+      mapDelta:{
         latitudeDelta: 0.0922,
         longitudeDelta: 0.0421,
-      },
-      marker:{
-        coordinate: {
-          latitude: 21.029283,
-          longitude: 105.803557,
-          latitudeDelta: 0.0922,
-          longitudeDelta: 0.0421,
-        },
-        title: '',
       }
     }
   }
@@ -68,24 +56,45 @@ export default class StadiumDetailView extends Component {
     return ratingScore
   }
 
+  get locationStadium() {
+    const { location } = this.stadiumsData[0];
+    const { mapDelta } = this.state
+
+    const coordinateTemp = {
+      latitude: Number(location.latitude),
+      longitude: Number(location.longtitude),
+      latitudeDelta: mapDelta.latitudeDelta,
+      longitudeDelta: mapDelta.longitudeDelta,
+    }
+
+    return coordinateTemp;
+  }
+
+  renderAmeninty = item => {
+    const { name, _id } = item;
+
+    return (
+      <Text key={_id} style={styles.info}>{'- ' + name}</Text>
+    );
+  }
+
   render() {
 
     if(this.stadiumsData[0] === undefined) return null;
 
-    const { name, address, rates, description, _id } = this.stadiumsData[0];
-    const { marker } = this.state
-    const markerList = (<Marker
-      coordinate={marker.coordinate}
-      title={marker.title}
-      description={marker.description}
-    />)
+    const { name, address, rates, description, _id, location, amenitieIds,thumbnail } = this.stadiumsData[0];
+    const amenities = _.map(amenitieIds, item => this.renderAmeninty(item));
+    const markerAddress = (<Marker
+      coordinate={this.locationStadium}
+      title={name}
+    />);
 
     return (
       <ParallaxScrollView
         keyboardShouldPersistTaps="always"
         maskColor="transparent"
         parallaxHeaderHeight={250}
-        renderBackground={() => <Image source={{uri: this.stadiumsData[0].thumbnail[0].url,
+        renderBackground={() => <Image source={{uri: thumbnail[0]===undefined?'':thumbnail[0].url,
         width: window.width,
         height: 250}}/>}>
           <View style={styles.container}>
@@ -106,7 +115,7 @@ export default class StadiumDetailView extends Component {
                 height: 40,
                 borderRadius: 4,
                 backgroundColor: '#FF1493',
-                marginTop: 10,
+                marginTop: 15,
                 alignItems: 'center',
                 justifyContent: 'center',
                 }}>
@@ -130,15 +139,25 @@ export default class StadiumDetailView extends Component {
             </View>
 
             <View style={{ width: '90%', alignItems: 'flex-start', marginTop: 10, borderBottomColor: '#A9A9A9', borderBottomWidth: 2, paddingLeft: 10, paddingBottom: 15 }}>
+              <Text style={styles.name}>{'Amenities'}</Text>   
+              {amenities}           
+            </View>
+
+            <View style={{ width: '90%', alignItems: 'flex-start', marginTop: 10, paddingLeft: 10, paddingBottom: 15 }}>
               <Text style={styles.name}>{'Location'}</Text>
               <Text style={{ color: '#6e6e6e', fontSize: 12, marginTop: 5 }}>{address}</Text>
               
                 <View style={styles.wrapMap}>
                   <MapView
                     style={styles.map}
-                    initialRegion={this.state.initialRegion}
+                    initialRegion={this.locationStadium}
+                    zoomEnabled={true}
+                    zoomControlEnabled={true}
+                    minZoomLevel={0}
+                    maxZoomLevel={20}
+                    loadingEnabled={true}
                   >
-                    {markerList}
+                    {markerAddress}
                   </MapView>
                 </View>
             </View>
@@ -166,12 +185,17 @@ const styles = StyleSheet.create({
   },
   wrapMap: {
     marginTop: 15,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: 'flex-end',
+    alignItems: 'flex-end',
     width: '100%',
     height: 250
   },
   map: {
     ...StyleSheet.absoluteFillObject,
   },
+  buttonZoom: {
+    width: 30,
+    height: 30,
+    backgroundColor: 'red'
+  }
 });

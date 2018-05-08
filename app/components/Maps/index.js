@@ -50,6 +50,8 @@ export default class Maps extends Component {
         <MapView
           style={styles.map}
           initialRegion={this.state.initialRegion}
+          showsMyLocationButton={true}
+          showsUserLocation={true}
         >
           {markerList}
         </MapView>

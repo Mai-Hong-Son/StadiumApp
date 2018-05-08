@@ -29,11 +29,11 @@ export default class SessionDetail extends Component {
 
     return (
       <View style={styles.container}>
-        <Image source={{ uri: thumbnail[0] }} style={styles.thumbnail}/>
+        <Image source={{ uri: thumbnail[0]===undefined?'':thumbnail[0].url }} style={styles.thumbnail}/>
         <View style={{ width: '90%', marginTop: 15 }}>
             <Text style={styles.name}>{name}</Text>
             <Text style={styles.info}>{address}</Text>
-            <Text style={styles.info}>{'Price: ' + price + ' ' + 'VND'}</Text>
+            <Text style={styles.info}>{'Price: ' + price + '.000 ' + 'VND'}</Text>
             <Text style={styles.info}>{'Contact: 01682396571'}</Text>
             <Text style={styles.info}>
                 <Icon name='md-calendar' size={15} color="#6e6e6e"  /> { startHour + ' - ' + weekDay + '(' + date + ')' + '  '}
@@ -60,7 +60,7 @@ export default class SessionDetail extends Component {
                 justifyContent: 'center',
                 }}>
                     <Text style={{ color: '#ffffff' }}>
-                        Book This Stadium
+                        Book This Session
                     </Text>
                 </View>
             </TouchableOpacity>
@@ -83,7 +83,7 @@ const styles = StyleSheet.create({
     height: '40%',
     alignContent: 'center',
     alignSelf: 'center',
-    marginTop: -57
+    marginTop: -65
   },
   name: {
     color: '#292941',
