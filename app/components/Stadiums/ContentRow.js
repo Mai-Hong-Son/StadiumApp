@@ -44,7 +44,7 @@ export default class ContentRow extends Component {
                     <Text style={styles.auth}>{address}</Text>
                 </View>
                 <StarRating
-                    disabled={false}
+                    disabled
                     maxStars={5}
                     rating={this.state.ratingScore}
                     starSize={18}

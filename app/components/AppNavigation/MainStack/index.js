@@ -8,7 +8,8 @@ import Stadiums from '../../Stadiums/withConnect';
 import StadiumDetail from '../../StadiumDetail/withConnect';
 import Sessions from '../../Sessions/withConnect';
 import SessionDetail from '../../SessionDetail/index';
-import ConfirmSession from '../../ConfirmSession/index';
+import Rating from '../../Rating/withConnect';
+import Reservation from '../../Reservation/withConnect';
 import { OverallSchedulesTabs } from './WeekdayTabs';
 import Icon from 'react-native-vector-icons/Ionicons';
 
@@ -70,8 +71,22 @@ const StadiumStack = StackNavigator({
             headerTintColor: '#ffffff'
         }
     },
-    ConfirmSession: {
-        screen: ConfirmSession,
+    Reservation: {
+        screen: Reservation,
+        navigationOptions: {
+            tabBarVisible: false,
+            title: 'Postal Payment',
+            headerStyle: {
+                backgroundColor: '#32CD32'
+            },
+            headerBackTitleStyle : {
+                opacity: 1
+            },
+            headerTintColor: '#ffffff'
+        }
+    },
+    Rating: {
+        screen: Rating,
         navigationOptions: {
             tabBarVisible: false,
             title: null,

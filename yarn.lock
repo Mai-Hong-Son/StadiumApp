@@ -3680,6 +3680,10 @@ react-native-parallax-scroll-view@^0.21.0:
   dependencies:
     prop-types "^15.6.0"
 
+react-native-simple-radio-button@^2.7.1:
+  version "2.7.1"
+  resolved "https://registry.yarnpkg.com/react-native-simple-radio-button/-/react-native-simple-radio-button-2.7.1.tgz#4a4a5cae903b6bc680c5e4bd5931948aa7608da0"
+
 react-native-spinkit@^1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/react-native-spinkit/-/react-native-spinkit-1.1.1.tgz#3ae512f3978bc750b7c02639911e1710750d8539"

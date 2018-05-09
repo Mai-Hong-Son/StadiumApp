@@ -5,8 +5,7 @@ import {
   Text,
   View,
   Image,
-  TouchableOpacity,
-  Alert
+  TouchableOpacity
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import moment from 'moment';
@@ -39,17 +38,7 @@ export default class SessionDetail extends Component {
                 <Icon name='md-calendar' size={15} color="#6e6e6e"  /> { startHour + ' - ' + weekDay + '(' + date + ')' + '  '}
                 <Icon name='md-clock' size={15} color="#6e6e6e"  /> {'Duration' + ' - ' + duration + ' min'}
             </Text>
-            <TouchableOpacity onPress={ () => {
-              Alert.alert(
-                'Confirm',
-                'Are you sure?',
-                [
-                  {text: 'Cancel', onPress: () => console.log('Cancel book!'), style: 'cancel'},
-                  {text: 'OK', onPress: () => console.warn('Book success!')},
-                ],
-                { cancelable: false }
-              )
-            } }>
+            <TouchableOpacity onPress={ () => this.props.navigation.navigate('Reservation', { session: session }) }>
                 <View
                 style={{ width: '100%',
                 height: 40,

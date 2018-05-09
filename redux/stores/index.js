@@ -4,13 +4,13 @@ import storage from 'redux-persist/es/storage';
 import reduxThunk from 'redux-thunk';
 import axiosMiddleware from './axiosMiddleware';
 
-import { checkLogin, stadiums, districts, stadiumsByDistrict, sessions, allStadiums, user_tokenId } from './../reducers/index';
+import { checkLogin, stadiums, districts, stadiumsByDistrict, sessions, allStadiums, user_tokenId, reservations, allUser } from './../reducers/index';
 import { navReducer } from './../../app/components/AppNavigation/reducer';
 
 const config = {
   key: 'root',
   storage,
-  blacklist: ['stadiums', 'navReducer', 'stadiumsByDistrict', 'sessions', 'allStadiums']
+  blacklist: ['stadiums', 'navReducer', 'stadiumsByDistrict', 'sessions', 'allStadiums', 'allUser']
 }
 
 export default function buildStore() {
@@ -22,7 +22,9 @@ export default function buildStore() {
     stadiumsByDistrict,
     sessions,
     allStadiums,
-    user_tokenId
+    user_tokenId,
+    reservations,
+    allUser,
   });
 
   const store = createStore(
