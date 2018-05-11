@@ -3,17 +3,18 @@ import ReservationView from './index';
 import { handleReservation, handleUser } from '../../../redux/actions/index';
 
 function mapStateToProps(state) {
-    const { checkLogin: { userId }, allUser } = state
+    const { checkLogin: { userId }, allUser, statusBooking, reservations } = state
 
     return {
-        userId, allUser
+        userId, allUser, statusBooking, reservations
     };
 }
 
 function mapDispatchToProps(dispatch) {
     return {
         createNewReservation: (reservation) => dispatch(handleReservation.createNewReservation(reservation)),
-        getAllUser: () => dispatch(handleUser.getAllUser())
+        getAllUser: () => dispatch(handleUser.getAllUser()),
+        getALlReservation: () => dispatch(handleReservation.getAllReservation())
     };
 }
 

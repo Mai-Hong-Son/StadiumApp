@@ -24,7 +24,6 @@ export default function DetailInfo({ session, stadium, variant }) {
       <View>
         <Text style={styles.name}>{name}</Text>
         <Text style={styles.info}>{stadiumName}</Text>
-        <Text style={styles.info}>{'Empty: (4/4)'}</Text>
         <Text style={styles.infoPrice}>{price + '.000' + ' ' + 'VNĐ'}</Text>
       </View>
       {/* <View style={{ width: '30%', justifyContent: 'flex-end', alignItems: 'flex-end' }}>

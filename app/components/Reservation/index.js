@@ -7,7 +7,8 @@ import {
   TextInput,
   FlatList,
   Image,
-  TouchableOpacity
+  TouchableOpacity,
+  Alert
 } from 'react-native';
 import _ from 'lodash';
 import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-native-simple-radio-button';
@@ -25,11 +26,46 @@ export default class ReservationView extends Component {
     this.state={
         bankName: bank_props[0].value,
         childStadiumId: this.childStadiumsData[0].value,
+        bankNumber: '',
+        checkClickBtnBook: false,
+        textValidate: '',
     };
   }
 
   componentDidMount(){
     this.props.getAllUser();
+    this.props.getALlReservation();
+  }
+
+  componentWillReceiveProps(nextProps) {
+      const { isBook: { success } } = nextProps.statusBooking;
+      const { checkClickBtnBook } = this.state;
+      
+      if(success && checkClickBtnBook) {
+        Alert.alert(
+            'Confirm',
+            'Booking Success! Would you like to continue booking?',
+            [
+              {text: 'No', onPress: () => {
+                  this.setState({
+                    checkClickBtnBook: false
+                  })
+                  this.props.navigation.navigate('BookingSuccess')
+                }, style: 'cancel'},
+              {text: 'Yes', onPress: () => console.log('OK Pressed')},
+            ],
+            { cancelable: false }
+        )
+      } else if(!success && checkClickBtnBook) {
+        Alert.alert(
+            'Confirm',
+            'Stadium Is Booked! Please, Choose Another Stadium!',
+            [
+              {text: 'OK', onPress: () => console.log('OK Pressed')},
+            ],
+            { cancelable: false }
+        )
+      }
   }
 
   get userData() {
@@ -38,6 +74,15 @@ export default class ReservationView extends Component {
     const { data } = this.props.allUser;
 
     return _.filter(data, { userId: userId });
+  }
+
+  get reservationData() {
+    const { state: { params: { session } } } = this.props.navigation;
+    const { reservations: { data } } = this.props;
+
+    return _.filter(data, item => {
+        return item.sessionId._id === session._id;
+    });
   }
 
   get childStadiumsData() {
@@ -49,17 +94,57 @@ export default class ReservationView extends Component {
         listChild.push({
             label: 'Stadium ' + item.numberOfS,
             value: item._id
-        })
+        });
     } );
+    if( this.reservationData.length !== undefined || this.reservationData.length !== 0) {
+        _.map(this.reservationData, item => {
+            _.remove(listChild, o => {
+                return o.value === item.childStadiumId._id;
+            })
+        });
+    }
 
     return listChild;
   }
 
-  onReservation = (userId, childStadiumId, sessionId, bankNumber, bankName, payed) => {
-    this.props.createNewReservation({userId, childStadiumId, sessionId, bankNumber, bankName, payed})
+  onChangeText = (textChange) => {
+    if(textChange !== '') {
+        this.setState({
+            bankNumber: textChange,
+            textValidate: ''
+        })
+    } else {
+        this.setState({
+            textValidate: 'Please! Put bank acount number!'
+        })
+    }
+  }
+
+  onReservation = () => {
+    const { state: { params: { session } } } = this.props.navigation;
+
+    const reservation = {
+        userId: this.userData[0]._id,
+        childStadiumId: this.state.childStadiumId,
+        sessionId: session._id,
+        bankNumber: this.state.bankNumber,
+        bankName: this.state.bankName
+    }
+
+    if(this.state.bankNumber === '' || this.state.bankNumber.length <= 6) {
+        this.setState({
+            textValidate: 'Bank number must be > 6 character'
+        });
+    } else {
+        this.props.createNewReservation(reservation);
+        this.setState({
+            checkClickBtnBook: true
+        });
+    }
   }
 
   render() {
+    const { state: { params: { session: { price } } } } = this.props.navigation;
 
     return (
       <View style={{ flex: 1, justifyContent: 'flex-start', alignItems: 'center', backgroundColor: '#32CD32'}}>
@@ -87,12 +172,14 @@ export default class ReservationView extends Component {
                 style={{ height: 44, paddingLeft: 10, borderColor: '#6e6e6e', borderRadius: 4, borderWidth: 1, marginTop: 10 }}
                 underlineColorAndroid='transparent'
                 placeholder='Bank account number'
-                placeholderTextColor='#6e6e6e'/>
+                placeholderTextColor='#6e6e6e'
+                onChangeText={this.onChangeText}/>
+            <Text style={{ color: 'red', fontSize: 12, marginTop: 5 }}>{this.state.textValidate}</Text>
 
-            <Text style={{ color: '#292941', fontSize: 17, marginTop: 10 }}>{'Price: '}</Text>
+            <Text style={{ color: '#292941', fontSize: 17, marginTop: 5 }}>{'Price: ' + price + '.000'}</Text>
         </View>
 
-        <TouchableOpacity style={{ marginTop: 15, width: '90%' }} onPress={() => null}>
+        <TouchableOpacity style={{ marginTop: 15, width: '90%' }} onPress={this.onReservation}>
             <View
             style={{ height: 44, backgroundColor: '#ffffff', borderColor: '#D91283', borderWidth: 1, borderRadius: 4, justifyContent: 'center', alignItems: 'center' }}>
                 <Text style={{ color: '#D91283', fontSize: 15, textAlign: 'center' }}>{'CONFIRM'}</Text>

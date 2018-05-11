@@ -27,6 +27,8 @@ export default class StadiumDetailView extends Component {
         latitudeDelta: 0.0922,
         longitudeDelta: 0.0421,
       },
+      ratingScore: 0,
+      countRating: 0
     }
   }
 
@@ -36,6 +38,15 @@ export default class StadiumDetailView extends Component {
     this.props.getAllStadium();
   }
 
+  componentWillReceiveProps(nextProps) {
+    const { state: { params: { stadiumId } } } = this.props.navigation;
+    const { data } = nextProps.allStadiums;
+
+    if(nextProps.allStadiums.length !== 0) {
+      this.caculationRating(_.filter(data, { _id: stadiumId })[0]);
+    }
+  }
+
   get stadiumsData() {
     const { state: { params: { stadiumId } } } = this.props.navigation;
     const { data } = this.props.allStadiums;
@@ -43,17 +54,17 @@ export default class StadiumDetailView extends Component {
     return _.filter(data, { _id: stadiumId });
   }
 
-  get ratingScore() {
-    const { rates } = this.stadiumsData[0]
-    var ratingScore = 0;
+  caculationRating = (stadium) => {
+    const { rates } = stadium
 
     if(rates.length !== 0 || rates.length !== undefined) {
       _.map(rates, (item) => {
-          ratingScore = (ratingScore + item.score)/rates.length
+          this.setState({
+            ratingScore: ((this.state.ratingScore + item.score)/rates.length).toFixed(1),
+            countRating: rates.length
+          })
       })
     }
-
-    return ratingScore
   }
 
   get locationStadium() {
@@ -130,10 +141,10 @@ export default class StadiumDetailView extends Component {
               <View style={{ height: 80, width: '90%', alignItems: 'flex-start', marginTop: 10, borderBottomColor: '#A9A9A9', borderBottomWidth: 2, paddingLeft: 10 }}>
                 <TouchableOpacity onPress={() => this.props.navigation.navigate('Rating' ,{ stadiumId: _id })}>
                   <View style={{ height: 50, width: 50, backgroundColor: '#8B008B', borderRadius: 10, justifyContent: 'center', alignItems: 'center' }}>
-                    <Text style={{ color: '#ffffff' }}>{this.ratingScore}</Text>
+                    <Text style={{ color: '#ffffff' }}>{this.state.ratingScore}</Text>
                   </View>
                   </TouchableOpacity>
-                <Text style={{ width: 50, textAlign: 'center', color: '#6e6e6e', fontSize: 12, marginTop: 5 }}>{rates.length + ' ' + 'Rating'}</Text>
+                <Text style={{ width: 50, textAlign: 'center', color: '#6e6e6e', fontSize: 12, marginTop: 5 }}>{this.state.countRating + ' ' + 'Rating'}</Text>
               </View>
 
               <View style={{ width: '90%', alignItems: 'flex-start', marginTop: 10, borderBottomColor: '#A9A9A9', borderBottomWidth: 2, paddingLeft: 10, paddingBottom: 15 }}>

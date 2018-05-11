@@ -5,21 +5,52 @@ import {
   Text,
   View,
   Image,
-  TouchableOpacity
+  TouchableOpacity,
+  Alert
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import moment from 'moment';
 import _ from 'lodash';
 
-export default class SessionDetail extends Component {
+export default class SessionDetailView extends Component {
 
   constructor(props) {
     super(props);
   }
 
+  componentDidMount() {
+    this.props.getALlReservation();
+  }
+
+  get reservationData() {
+    const { state: { params: { session } } } = this.props.navigation;
+    const { reservations: { data } } = this.props;
+
+    return _.filter(data, item => {
+        return item.sessionId._id === session._id;
+    });
+  }
+
+  onMoveSchedule = () => {
+    const { state: { params: { session } } } = this.props.navigation;
+
+    if(this.reservationData.length===4) {
+      Alert.alert(
+          'Confirm',
+          'No Emty Stadium To Book! Please, Choose Another Schedule!',
+          [
+            {text: 'OK', onPress: () => console.log('OK Pressed')},
+          ],
+          { cancelable: false }
+      )
+    } else {
+      this.props.navigation.navigate('Reservation', { session: session });
+    }
+  }
+
   render() {
     const { state: { params: { session, stadium } } } = this.props.navigation;
-    const { duration, startedAt: time, price } = session;
+    const { duration, startedAt: time, price, childStadiums } = session;
     const { name, address, thumbnail } = stadium;
 
     const startHour = moment(time).format('HH:mm');
@@ -33,12 +64,15 @@ export default class SessionDetail extends Component {
             <Text style={styles.name}>{name}</Text>
             <Text style={styles.info}>{address}</Text>
             <Text style={styles.info}>{'Price: ' + price + '.000 ' + 'VND'}</Text>
+            <Text style={styles.info}>
+              {`Empty: (${this.reservationData.length===undefined?0:childStadiums.length - this.reservationData.length}/${childStadiums.length})`}
+            </Text>
             <Text style={styles.info}>{'Contact: 01682396571'}</Text>
             <Text style={styles.info}>
                 <Icon name='md-calendar' size={15} color="#6e6e6e"  /> { startHour + ' - ' + weekDay + '(' + date + ')' + '  '}
                 <Icon name='md-clock' size={15} color="#6e6e6e"  /> {'Duration' + ' - ' + duration + ' min'}
             </Text>
-            <TouchableOpacity onPress={ () => this.props.navigation.navigate('Reservation', { session: session }) }>
+            <TouchableOpacity onPress={this.onMoveSchedule}>
                 <View
                 style={{ width: '100%',
                 height: 40,

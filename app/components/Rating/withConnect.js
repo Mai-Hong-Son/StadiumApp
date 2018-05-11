@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import RatingView from './index';
-import { handleRating, handleUser } from '../../../redux/actions/index';
+import { handleRating, handleUser, navigations } from '../../../redux/actions/index';
 
 function mapStateToProps(state) {
     const { checkLogin: { userId }, allUser } = state
@@ -13,7 +13,8 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
     return {
         createNewRating: (rating) => dispatch(handleRating.createNewRating(rating)),
-        getAllUser: () => dispatch(handleUser.getAllUser())
+        getAllUser: () => dispatch(handleUser.getAllUser()),
+        navigateMainTab: tabName => dispatch(navigations.navigateMainTab(tabName)),
     };
 }
 

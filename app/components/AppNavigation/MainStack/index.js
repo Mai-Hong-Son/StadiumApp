@@ -2,20 +2,70 @@ import React from 'react';
 import { TabNavigator, StackNavigator, TabBarBottom } from 'react-navigation';
 import Login from '../../Login/withConnect';
 import Home from '../../Home/index';
-import Maps from '../../Maps/index';
+import MySessions from '../../MySessions/index';
 import Profiles from '../../Profiles/index';
 import Stadiums from '../../Stadiums/withConnect';
 import StadiumDetail from '../../StadiumDetail/withConnect';
 import Sessions from '../../Sessions/withConnect';
-import SessionDetail from '../../SessionDetail/index';
+import SessionDetail from '../../SessionDetail/withConnect';
 import Rating from '../../Rating/withConnect';
+import BookingSuccess from '../../BookingSuccess/withConnect';
 import Reservation from '../../Reservation/withConnect';
 import { OverallSchedulesTabs } from './WeekdayTabs';
 import Icon from 'react-native-vector-icons/Ionicons';
 
-const StadiumStack = StackNavigator({
+export const RootTabs = TabNavigator({
+    Home: {
+        screen: Home,
+    },
     Stadiums: {
         screen: Stadiums,
+    },
+    MySessions: {
+        screen: MySessions,
+        navigationOptions: {
+            title: 'My Sessions',
+        }
+    },
+    Profile: {
+        screen: Profiles,
+    },
+},{
+    navigationOptions:({ navigation }) => ({
+        tabBarIcon: ({ focused, tintColor }) => {
+            const { routeName } = navigation.state;
+            let iconName;
+            if (routeName === 'Home') {
+              iconName = `ios-home${focused ? '' : '-outline'}`;
+            } else if (routeName === 'Stadiums') {
+              iconName = `ios-football${focused ? '' : '-outline'}`;
+            } else if (routeName === 'MySessions') {
+                iconName = `ios-calendar${focused ? '' : '-outline'}`;
+            } else if (routeName === 'Profile') {
+                iconName = `ios-person${focused ? '' : '-outline'}`;
+            }
+ 
+            return (<Icon name={iconName} size={25} color={tintColor} />);
+        },
+    }),
+    tabBarComponent: TabBarBottom,
+    tabBarPosition: 'bottom',
+    animationEnabled: false,
+    swipeEnabled: false,
+    tabBarOptions: {
+      activeTintColor: '#D91283',
+      inactiveTintColor: '#fff',
+      style: {
+          backgroundColor: '#32CD32',
+      },
+      showIcon: true,
+    },
+    lazy: true
+});
+
+export const RootStacks = StackNavigator({
+    HomeTab: {
+        screen: RootTabs,
         navigationOptions: {
             header: null,
         }
@@ -97,63 +147,28 @@ const StadiumStack = StackNavigator({
             headerTintColor: '#ffffff'
         }
     },
-});
-
-const RootTabs = TabNavigator({
-    Home: {
-        screen: Home,
-    },
-    StadiumLT: {
-        screen: StadiumStack,
+    BookingSuccess: {
+        screen: BookingSuccess,
         navigationOptions: {
-            tabBarLabel: 'Stadiums',
+            // tabBarVisible: false,
+            tabBarOptions: {
+                style: {
+                    backgroundColor: '#32CD32',
+                    elevation: 0, 
+                    opacity: 0
+                },
+              },
+            header: null
         }
     },
-    Maps: {
-        screen: Maps,
-    },
-    Profile: {
-        screen: Profiles,
-    },
-},{
-    navigationOptions:({ navigation }) => ({
-        tabBarIcon: ({ focused, tintColor }) => {
-            const { routeName } = navigation.state;
-            let iconName;
-            if (routeName === 'Home') {
-              iconName = `ios-home${focused ? '' : '-outline'}`;
-            } else if (routeName === 'StadiumLT') {
-              iconName = `ios-football${focused ? '' : '-outline'}`;
-            } else if (routeName === 'Maps') {
-                iconName = `ios-map${focused ? '' : '-outline'}`;
-            } else if (routeName === 'Profile') {
-                iconName = `ios-person${focused ? '' : '-outline'}`;
-            }
- 
-            return (<Icon name={iconName} size={25} color={tintColor} />);
-        },
-    }),
-    tabBarComponent: TabBarBottom,
-    tabBarPosition: 'bottom',
-    animationEnabled: false,
-    swipeEnabled: false,
-    tabBarOptions: {
-      activeTintColor: '#D91283',
-      inactiveTintColor: '#fff',
-      style: {
-          backgroundColor: '#32CD32',
-      },
-      showIcon: true,
-    },
-    lazy: true
-});
+})
 
 export const MainStack = StackNavigator({
     Login: {
         screen: Login,
     },
-    HomeStack: {
-        screen: RootTabs,
+    RootStack: {
+        screen: RootStacks,
     },
 }, {
     navigationOptions: {

@@ -18,8 +18,8 @@ export default class ContentRow extends Component {
         }
     }
 
-    componentDidMount() {
-        const { item: { rates } } = this.props;
+    componentWillReceiveProps(nextProps) {
+        const { item: { rates } } = nextProps;
 
         if(rates.length !== 0 || rates.length !== undefined) {
             _.map(rates, (item) => {

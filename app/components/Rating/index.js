@@ -61,13 +61,7 @@ export default class RatingView extends Component {
                 score
               }
               this.props.createNewRating(rating);
-              Alert.alert(
-                'Confirm',
-                'Rate Success?',
-                [
-                  {text: 'OK'},
-                ]
-              )
+              this.props.navigateMainTab('Home')
         }}>
           <View style={{ width: 150, height: 44, borderColor: '#D91283', borderWidth: 1, borderRadius: 4, justifyContent: 'center', backgroundColor: '#ffffff' }}>
             <Text style={{ fontSize: 15, textAlign: 'center', color: '#D91283' }}>{'RATING'}</Text>

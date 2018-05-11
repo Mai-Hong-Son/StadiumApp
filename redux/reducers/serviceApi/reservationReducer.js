@@ -11,4 +11,15 @@ export const reservations = (state = DEFAULT_STATES, action) => {
     }
     return state;
 }
+
+export const statusBooking = (state = { isBook: { success: false }, status: false }, action) => {
+    
+    if (_.endsWith(action.type, ':ERROR') && _.startsWith(action.type, 'CREATE_RESERVATION')) {
+        return {...state, status: false };
+    }
+    if (_.endsWith(action.type, ':SUCCESS') && _.startsWith(action.type, 'CREATE_RESERVATION')) {
+        return { ...state, isBook: action.payload.data, status: true };
+    }
+    return state;
+}
     
