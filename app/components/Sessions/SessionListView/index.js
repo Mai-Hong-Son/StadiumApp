@@ -23,7 +23,7 @@ const COLORS = {
     TRIPLE_6E:              '#6e6e6e',
     PINK:                   '#e82e81',
     PURPLE:                 '#83358b',
-  };
+};
 
 export default class SessionListView extends Component {
 

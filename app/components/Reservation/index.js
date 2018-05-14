@@ -49,10 +49,19 @@ export default class ReservationView extends Component {
               {text: 'No', onPress: () => {
                   this.setState({
                     checkClickBtnBook: false
-                  })
-                  this.props.navigation.navigate('BookingSuccess')
+                  });
+                  this.props.navigation.navigate('BookingSuccess');
                 }, style: 'cancel'},
-              {text: 'Yes', onPress: () => console.log('OK Pressed')},
+              {text: 'Yes', onPress: () => {
+                  if(this.childStadiumsData.length === 0 || this.childStadiumsData.length === undefined) {
+                    this.setState({
+                        checkClickBtnBook: false
+                    });
+                    this.props.navigateMainTab('MySessions');
+                  } else {
+                      console.log('OK');
+                  }
+              }},
             ],
             { cancelable: false }
         )

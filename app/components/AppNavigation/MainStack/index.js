@@ -2,8 +2,8 @@ import React from 'react';
 import { TabNavigator, StackNavigator, TabBarBottom } from 'react-navigation';
 import Login from '../../Login/withConnect';
 import Home from '../../Home/index';
-import MySessions from '../../MySessions/index';
-import Profiles from '../../Profiles/index';
+import MySessions from '../../MySessions/withConnect';
+import Profiles from '../../Profiles/withConnect';
 import Stadiums from '../../Stadiums/withConnect';
 import StadiumDetail from '../../StadiumDetail/withConnect';
 import Sessions from '../../Sessions/withConnect';
@@ -24,7 +24,7 @@ export const RootTabs = TabNavigator({
     MySessions: {
         screen: MySessions,
         navigationOptions: {
-            title: 'My Sessions',
+            title: 'My Schedules',
         }
     },
     Profile: {
@@ -73,7 +73,6 @@ export const RootStacks = StackNavigator({
     StadiumDetail: {
         screen: StadiumDetail,
         navigationOptions: {
-            tabBarVisible: false,
             title: null,
             headerStyle: {
                 backgroundColor: '#32CD32',
@@ -92,7 +91,6 @@ export const RootStacks = StackNavigator({
             shadowColor: 'transparent',
         },
         navigationOptions: {
-            tabBarVisible: false,
             // title: '',
             headerStyle: {
                 backgroundColor: '#32CD32',
@@ -108,7 +106,6 @@ export const RootStacks = StackNavigator({
     SessionDetail: {
         screen: SessionDetail,
         navigationOptions: {
-            tabBarVisible: false,
             title: null,
             headerStyle: {
                 backgroundColor: '#32CD32',
@@ -124,7 +121,6 @@ export const RootStacks = StackNavigator({
     Reservation: {
         screen: Reservation,
         navigationOptions: {
-            tabBarVisible: false,
             title: 'Postal Payment',
             headerStyle: {
                 backgroundColor: '#32CD32'
@@ -138,7 +134,6 @@ export const RootStacks = StackNavigator({
     Rating: {
         screen: Rating,
         navigationOptions: {
-            tabBarVisible: false,
             title: null,
             headerStyle: {
                 backgroundColor: '#32CD32',

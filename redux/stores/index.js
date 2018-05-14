@@ -10,7 +10,7 @@ import { navReducer, mainRouter } from './../../app/components/AppNavigation/red
 const config = {
   key: 'root',
   storage,
-  blacklist: ['stadiums', 'navReducer', 'stadiumsByDistrict', 'sessions', 'allStadiums', 'allUser', 'statusBooking', 'mainRouter']
+  blacklist: ['stadiums', 'navReducer', 'stadiumsByDistrict', 'sessions', 'allStadiums', 'allUser', 'statusBooking', 'mainRouter', 'reservations']
 }
 
 export default function buildStore() {

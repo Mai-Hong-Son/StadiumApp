@@ -14,7 +14,7 @@ export default class SessionsView extends Component {
         const { params } = navigation.state;
         
         return {
-          title: params ? params.title : 'A Nested Details Screen',
+          title: params.title
         }
     };
 

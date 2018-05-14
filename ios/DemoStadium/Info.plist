@@ -53,13 +53,13 @@
 		<true/>
 		<key>NSExceptionDomains</key>
 		<dict>
-			<key>com.wefit.app.stg</key>
-			<string></string>
 			<key>localhost</key>
 			<dict>
 				<key>NSExceptionAllowsInsecureHTTPLoads</key>
 				<true/>
 			</dict>
+			<key>org.reactjs.native.example.DemoStadium</key>
+			<string></string>
 		</dict>
 	</dict>
 	<key>NSLocationWhenInUseUsageDescription</key>

@@ -3,7 +3,8 @@ import {
   Platform,
   StyleSheet,
   Text,
-  View
+  View,
+  StatusBar
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Header from './Header';
@@ -18,6 +19,9 @@ export default class Home extends Component {
   render() {
     return (
       <View style={styles.container}>
+        <StatusBar
+          barStyle="light-content"
+        />
         <Header />
         <CardContent />
         <View style={{ width: '80%', borderTopWidth: 2, borderTopColor: '#6e6e6e', marginTop: 30, paddingTop: 10 }}>

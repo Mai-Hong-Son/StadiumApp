@@ -11,6 +11,10 @@ export const checkLogin = (state = defaultState,action) => {
             return { isLogin: !state.isLogin, userId: action.payload };
         case LOGIN_TYPES.LOGIN_ERROR:
             return state;
+        case LOGIN_TYPES.LOGOUT_SUCCESS:
+            return { isLogin: !state.isLogin, userId: "" };
+        case LOGIN_TYPES.LOGOUT_ERROR:
+            return state;
     }
     return state;
 }

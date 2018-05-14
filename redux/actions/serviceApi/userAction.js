@@ -16,6 +16,23 @@ function userLogin(user) {
     }
 }
 
+function editUser(user) {
+    return {
+        type: 'CREATE_USER',
+        payload: {
+            request:{
+                url:`/user`,
+                method: 'PUT',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                },
+                data: JSON.stringify(user)
+            }
+        }
+    }
+}
+
 function allUser() {
     return {
         type: 'GET_ALL_USER',
@@ -32,9 +49,22 @@ function allUser() {
 }
 
 export function createNewUser(user) {
-    return dispatch => {
+    return async dispatch => {
         try{
-            dispatch(userLogin(user));
+            const data = await user;
+            dispatch(userLogin(data));
+        }
+        catch(err) {
+            console.log(err)
+        }
+    }
+}
+
+export function updateUser(user) {
+    return async dispatch => {
+        try{
+            const data = await user;
+            dispatch(editUser(data));
         }
         catch(err) {
             console.log(err)
@@ -43,7 +73,7 @@ export function createNewUser(user) {
 }
 
 export function getAllUser() {
-    return dispatch => {
+    return async dispatch => {
         try{
             dispatch(allUser());
         }

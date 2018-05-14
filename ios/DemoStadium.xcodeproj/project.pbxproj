@@ -1532,7 +1532,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.wefit.app.stg;
+				PRODUCT_BUNDLE_IDENTIFIER = org.reactjs.native.example.DemoStadium;
 				PRODUCT_NAME = DemoStadium;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -1573,7 +1573,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.wefit.app.stg;
+				PRODUCT_BUNDLE_IDENTIFIER = org.reactjs.native.example.DemoStadium;
 				PRODUCT_NAME = DemoStadium;
 				VERSIONING_SYSTEM = "apple-generic";
 			};

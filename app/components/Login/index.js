@@ -19,6 +19,7 @@ export default class LoginView extends Component {
   }
 
   componentDidMount() {
+    this.props.getAllUser();
     if(this.props.isLogin === true) {
       this.props.navigation.navigate('RootStack');
     }
@@ -85,7 +86,7 @@ export default class LoginView extends Component {
       userData.avatar = json.picture.data.url;
       userData.gender = json.gender;
       userData.email = json.email;
-      userData.birthday = json.birthday;
+      userData.birthDay = json.birthday;
       userData.isActive = true
 
       this.props.navigation.navigate('RootStack');

@@ -13,6 +13,18 @@ function loginError() {
     }
 }
 
+function logoutSuccess() {
+    return {
+        type: LOGIN_TYPES.LOGOUT_SUCCESS
+    }
+}
+
+function logoutError() {
+    return {
+        type: LOGIN_TYPES.LOGOUT_ERROR
+    }
+}
+
 export function checkLogin(userId) {
     return dispatch => {
         try{
@@ -20,6 +32,17 @@ export function checkLogin(userId) {
         }
         catch(err) {
             dispatch(loginError());
+        }
+    }
+}
+
+export function checkLogout() {
+    return dispatch => {
+        try{
+            dispatch(logoutSuccess());
+        }
+        catch(err) {
+            dispatch(logoutError());
         }
     }
 }
