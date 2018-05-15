@@ -19,6 +19,8 @@ export default class LoginView extends Component {
   }
 
   componentDidMount() {
+    OneSignal.configure({});
+
     this.props.getAllUser();
     if(this.props.isLogin === true) {
       this.props.navigation.navigate('RootStack');

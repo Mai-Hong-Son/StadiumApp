@@ -51,8 +51,8 @@ export default class Profiles extends Component {
     return (
       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center'}}>
         <View style={{ flex: 1, backgroundColor: '#32CD32', width: '100%', justifyContent: 'center', alignItems: 'center'}}>
-          <View style={{width: 100, height: 100}}>
-            <Image style={{ width: '100%', height: '100%', borderRadius: 50 }}  source={{uri: `https://graph.facebook.com/${userId}/picture?type=large`}}/>
+          <View style={{width: 102, height: 102, borderRadius: 51, borderColor: 'red', borderWidth: 2, justifyContent: 'center', alignItems: 'center'}}>
+            <Image style={{ width: 100, height: 100, borderRadius: 50 }}  source={{uri: `https://graph.facebook.com/${userId}/picture?type=large`}}/>
           </View>
           <Text style={{ color: '#ffffff', fontWeight: 'bold', fontSize: 17, marginTop: 10 }}>{name}</Text>
         </View>

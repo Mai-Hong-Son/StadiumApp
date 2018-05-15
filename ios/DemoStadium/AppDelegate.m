@@ -24,7 +24,7 @@
                            didFinishLaunchingWithOptions:launchOptions];
   // For requiring push notification permissions manually.
   self.oneSignal = [[RCTOneSignal alloc] initWithLaunchOptions:launchOptions
-                                                         appId:@"cb2e1033-0d42-4354-8dfc-d1064dfd7194"
+                                                         appId:@"1f233456-1c35-4795-bc45-5883b96db16e"
                                                       settings:@{kOSSettingsKeyAutoPrompt: @false}];
   NSURL *jsCodeLocation;
 
