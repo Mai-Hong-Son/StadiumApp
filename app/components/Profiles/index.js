@@ -44,7 +44,7 @@ export default class Profiles extends Component {
 
   render() {
 
-    if( this.userData.length === 0 ) return null;
+    if(_.isEmpty(this.userData)) return null;
 
     const { name, createdAt, userId } = this.userData[0];
 

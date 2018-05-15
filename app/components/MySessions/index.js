@@ -98,6 +98,10 @@ export default class MySessionsView extends Component {
     if(reservationData.length === 0) return (
       <View style={styles.container}>
         <Header/>
+        <View style={{ flex: 1, width: '100%', justifyContent: 'center', alignItems: 'center' }}>
+          <Text style={{color: '#6e6e6e', fontSize: 20}}>{'!'}</Text>
+          <Text style={{color: '#6e6e6e', fontSize: 15}}>{'Emty Data'}</Text>
+        </View>
       </View>
     );
 

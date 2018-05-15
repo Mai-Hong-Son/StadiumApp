@@ -8,6 +8,7 @@ import {
 } from 'react-native';
 import _ from 'lodash';
 import SessionListView from './SessionListView/index';
+import LoadingPlaceholder from './../Reusables/Loadings/LoadingPlaceholder';
 
 export default class SessionsView extends Component {
     static navigationOptions = ({ navigation }) => {
@@ -54,7 +55,8 @@ export default class SessionsView extends Component {
     render() {
         const { tabId, variant, navigation: { navigate } } = this.props;
 
-        if(this.stadiumsData.length === 0 || this.sessionsData === undefined) return null;
+        if(this.stadiumsData.length === 0 || this.sessionsData === undefined)
+            return <LoadingPlaceholder visible={true} />;
 
         return (
         <View style={styles.container}>

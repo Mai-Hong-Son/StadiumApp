@@ -42,7 +42,7 @@ export default class StadiumView extends Component {
     const { data, status } = nextProps.districts
     
     if( status === true && isSetData === false && !isSearch) {
-      districtName.push("Tất cả");
+      districtName.push("All");
       data.forEach(element => {
         districtName.push(element.name)
       });
@@ -107,7 +107,7 @@ export default class StadiumView extends Component {
   }
 
   onSelectDropdown = (index, value) => {
-    if(value === "Tất cả") {
+    if(value === "All") {
       this.onRefresh();
     } else {
       const idDistrict = _.find(this.props.districts.data, (item) => {
@@ -162,7 +162,7 @@ export default class StadiumView extends Component {
           color: '#FF1493'
         }}
         options={this.state.districtName}
-        defaultValue={'Chọn khu vực...'}
+        defaultValue={'Choose district...'}
         onSelect={this.onSelectDropdown}
         />
       </View>
@@ -172,6 +172,7 @@ export default class StadiumView extends Component {
       <View style={styles.container}>
         {/* <Header districts = {this.props.districts}/> */}
         {header}
+        <LoadingPlaceholder visible={true} />
       </View>
     );
 
