@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import { LoginManager, AccessToken, GraphRequest, GraphRequestManager } from 'react-native-fbsdk';
 import { View, Text, BackHandler, Image, TouchableHighlight, StyleSheet} from 'react-native';
 import OneSignal from 'react-native-onesignal';
+import LinearGradient from 'react-native-linear-gradient';
 
-const backgroundStadium = require('./../../../assets/images/backgroundStadium.jpg');
+const ronaldoImage = require('./../../../assets/images/ronaldo.png');
 
 export default class LoginView extends Component {
   constructor(props){
@@ -102,23 +103,32 @@ export default class LoginView extends Component {
   render() {
     return (
       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-        <Image
-        style={{
-          flex: 1,
-          resizeMode: 'cover',
-          justifyContent: 'center',
-          alignItems: 'center',
-          position: 'absolute'}}
-        source={backgroundStadium}
-        blurRadius={0.2} />
-        
-        <TouchableHighlight
-        style = {styles.button}
-        onPress = {this.onLoginFb}>
-          <Text style={{ color: '#fff', fontWeight: 'bold' }}>
-          {"ĐĂNG NHẬP VỚI FACEBOOK"}
+        <LinearGradient
+        colors={['#00ff00', '#28a745']}
+        end={{ x: 1, y: 0.5 }}
+        start={{ x: 0.0, y: 0.25 }}
+        style={{ width: '100%',flex: 1, alignItems: 'center', justifyContent: 'space-between', paddingBottom: 30, paddingTop: 50}}
+        >
+          <Text style={{backgroundColor: 'rgba(52, 52, 52, 0)', fontWeight: 'bold', fontSize: 30, fontStyle: 'italic', color: '#fff'}}>
+            {'P.BOOKER'}
           </Text>
-        </TouchableHighlight>
+
+          <Image
+          style={{
+            width: '90%',
+            height: 350}}
+          source={ronaldoImage}/>
+
+          <View style={{ height: 2, backgroundColor: '#6e6e6e', width: '90%'}} />
+
+          <TouchableHighlight
+          style = {styles.button}
+          onPress = {this.onLoginFb}>
+            <Text style={{ color: '#fff', fontWeight: 'bold' }}>
+            {"ĐĂNG NHẬP VỚI FACEBOOK"}
+            </Text>
+          </TouchableHighlight>
+        </LinearGradient>
       </View>
       
     );
@@ -130,7 +140,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#5249D5',
     width: '90%',
-    height: 40,
+    height: 44,
     borderRadius: 4,
     justifyContent: 'center'
   }
