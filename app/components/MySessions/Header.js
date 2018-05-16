@@ -22,7 +22,7 @@ export default class Header extends Component {
 
 const styles = StyleSheet.create({
     containerHeader: {
-        backgroundColor: '#32CD32',
+        backgroundColor: '#28a745',
         justifyContent: 'center',
         alignItems: 'center',
         height: 70,

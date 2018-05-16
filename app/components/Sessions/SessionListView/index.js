@@ -33,17 +33,11 @@ export default class SessionListView extends Component {
         this.timelineVisible = new Animated.Value(0);
     }
 
-    componentDidMount() {
+    componentDidUpdate(prevProps) {
         const { sessionsData } = this.props;
 
         this.toggleTimeline(!_.isEmpty(sessionsData));
     }
-
-    // componentDidUpdate(prevProps) {
-    //     const { sessionsData } = this.props;
-
-    //     this.toggleTimeline(!_.isEmpty(sessionsData));
-    // }
 
     toggleTimeline = showing => (
         Animated.timing(this.timelineVisible, {

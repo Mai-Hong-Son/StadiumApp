@@ -6,6 +6,7 @@ import {
   View,
   Image
 } from 'react-native';
+const backgroundStadium = require('./../../../assets/images/stadium.jpeg');
 
 export default class Header extends Component {
   render() {
@@ -15,7 +16,7 @@ export default class Header extends Component {
           <Text style={{ color: '#ffffff', fontSize: 17}}>Welcome back <Text style={{color: 'pink', fontSize: 18, }}>Elnino</Text>!</Text>
         </View> */}
         <Image
-        source={{ uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6RaRKOK9cOcXyHb-XmmRZMRQcLWVEnfFX-4cF9eZpQgmmB8Bv' }}
+        source={backgroundStadium}
         style={{ width: '100%', height: '100%'}}
         />
       </View>
@@ -25,7 +26,7 @@ export default class Header extends Component {
 
 const styles = StyleSheet.create({
   container: {
-      // backgroundColor: '#32CD32',
+      // backgroundColor: '#28a745',
       height: 230,
       width: '100%',
   },

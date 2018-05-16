@@ -10,6 +10,7 @@ import {
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import moment from 'moment';
+import 'moment/locale/vi';
 import _ from 'lodash';
 
 export default class SessionDetailView extends Component {
@@ -36,8 +37,8 @@ export default class SessionDetailView extends Component {
 
     if(this.reservationData.length===4) {
       Alert.alert(
-          'Confirm',
-          'No Emty Stadium To Book! Please, Choose Another Schedule!',
+          'Xác nhận',
+          'Không còn sân trống! Hãy di chuyển đến sân khác!',
           [
             {text: 'OK', onPress: () => console.log('OK Pressed')},
           ],
@@ -54,7 +55,7 @@ export default class SessionDetailView extends Component {
     const { name, address, thumbnail } = stadium;
 
     const startHour = moment(time).format('HH:mm');
-    const weekDay = _.capitalize(moment(time).format('dddd'));
+    const weekDay = _.capitalize(moment(time).locale('vi').format('dddd'));
     const date =  moment(time).format('MM/DD');
 
     return (
@@ -63,14 +64,14 @@ export default class SessionDetailView extends Component {
         <View style={{ width: '90%', marginTop: 15 }}>
             <Text style={styles.name}>{name}</Text>
             <Text style={styles.info}>{address}</Text>
-            <Text style={styles.info}>{'Price: ' + price + '.000 ' + 'VND'}</Text>
+            <Text style={styles.info}>{'Giá: ' + price + '.000 ' + 'VND'}</Text>
             <Text style={styles.info}>
-              {`Empty: (${this.reservationData.length===undefined?0:childStadiums.length - this.reservationData.length}/${childStadiums.length})`}
+              {`Sân trống: (${this.reservationData.length===undefined?0:childStadiums.length - this.reservationData.length}/${childStadiums.length})`}
             </Text>
-            <Text style={styles.info}>{'Contact: 01682396571'}</Text>
+            <Text style={styles.info}>{'Liên hệ: 01682396571'}</Text>
             <Text style={styles.info}>
                 <Icon name='md-calendar' size={15} color="#6e6e6e"  /> { startHour + ' - ' + weekDay + '(' + date + ')' + '  '}
-                <Icon name='md-clock' size={15} color="#6e6e6e"  /> {'Duration' + ' - ' + duration + ' min'}
+                <Icon name='md-clock' size={15} color="#6e6e6e"  /> {'Thời gian' + ' - ' + duration + ' min'}
             </Text>
             <TouchableOpacity onPress={this.onMoveSchedule}>
                 <View
@@ -83,13 +84,10 @@ export default class SessionDetailView extends Component {
                 justifyContent: 'center',
                 }}>
                     <Text style={{ color: '#ffffff' }}>
-                        Book This Session
+                        {'ĐẶT LỊCH'}
                     </Text>
                 </View>
             </TouchableOpacity>
-            {/* <View style={{ width: '100%', borderTopColor: '#6e6e6e', borderTopWidth: 2, marginTop: 15 }}>
-
-            </View> */}
         </View>
       </View>
     );

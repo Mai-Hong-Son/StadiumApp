@@ -34,6 +34,7 @@ export default class SessionsView extends Component {
     get sessionsData() {
         const { state: { params: { stadiumId } } } = this.props.navigation;
         const { sessions: { data }, tabId, variant } = this.props;
+
         switch (variant) {
             case 'Sessions': return data[tabId];
             default: return [];

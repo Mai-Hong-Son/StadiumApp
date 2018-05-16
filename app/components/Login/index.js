@@ -27,40 +27,21 @@ export default class LoginView extends Component {
     }
   }
 
-  // componentWillReceiveProps(nextProps){
-  //   console.warn(nextProps);
-  // }
-
   componentWillMount() {
     BackHandler.addEventListener('hardwareBackPress', this.handleBackButtonClick);
     OneSignal.addEventListener('received', this.onReceived.bind(this));
-    // OneSignal.addEventListener('opened', this.onOpened);
-    // OneSignal.addEventListener('registered', this.onRegistered);
     OneSignal.addEventListener('ids', this.onIds.bind(this));
   }
 
   componentWillUnmount() {
     BackHandler.removeEventListener('hardwareBackPress', this.handleBackButtonClick);
     OneSignal.removeEventListener('received', this.onReceived.bind(this));
-    // OneSignal.removeEventListener('opened', this.onOpened);
-    // OneSignal.removeEventListener('registered', this.onRegistered);
     OneSignal.removeEventListener('ids', this.onIds.bind(this));
   }
 
   onReceived(notification) {
     console.warn("Notification received: ", notification.displayType);
   }
-
-  // onOpened(openResult) {
-  //   console.warn('Message: ', openResult.notification.payload.body);
-  //   console.warn('Data: ', openResult.notification.payload.additionalData);
-  //   console.warn('isActive: ', openResult.notification.isAppInFocus);
-  //   console.warn('openResult: ', openResult);
-  // }
-
-  // onRegistered(notifData) {
-  //   console.warn("Device had been registered for push notifications!", notifData);
-  // }
 
   onIds(device) {
     this.setState({

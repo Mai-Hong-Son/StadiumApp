@@ -6,6 +6,7 @@ function listSessionByStadium(stadiumId, date) {
         payload: {
             request:{
               url:`/sessions?stadiumId=${stadiumId}&date=${date}`,
+              params: { stadiumId },
               headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',

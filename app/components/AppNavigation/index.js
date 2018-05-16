@@ -8,7 +8,6 @@ import {
 } from 'react-navigation-redux-helpers';
 import MainStack from './MainStack/index';
 
-// Note: createReactNavigationReduxMiddleware must be run before createReduxBoundAddListener
 const middleware = createReactNavigationReduxMiddleware(
     "root",
     state => state.nav,
@@ -16,6 +15,7 @@ const middleware = createReactNavigationReduxMiddleware(
 const addListener = createReduxBoundAddListener("root");
 
 export default class AppNavigation extends React.Component {
+
     render() {
       return (
         <MainStack navigation={addNavigationHelpers({

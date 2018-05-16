@@ -17,18 +17,27 @@ import Icon from 'react-native-vector-icons/Ionicons';
 export const RootTabs = TabNavigator({
     Home: {
         screen: Home,
+        navigationOptions: {
+            title: 'Trang Chủ',
+        }
     },
     Stadiums: {
         screen: Stadiums,
+        navigationOptions: {
+            title: 'Chọn Sân',
+        }
     },
     MySessions: {
         screen: MySessions,
         navigationOptions: {
-            title: 'My Schedules',
+            title: 'Lịch Đã Đặt',
         }
     },
     Profile: {
         screen: Profiles,
+        navigationOptions: {
+            title: 'Thông Tin',
+        }
     },
 },{
     navigationOptions:({ navigation }) => ({
@@ -53,10 +62,10 @@ export const RootTabs = TabNavigator({
     animationEnabled: false,
     swipeEnabled: false,
     tabBarOptions: {
-      activeTintColor: '#D91283',
+      activeTintColor: '#C71585',
       inactiveTintColor: '#fff',
       style: {
-          backgroundColor: '#32CD32',
+          backgroundColor: '#28a745',
       },
       showIcon: true,
     },
@@ -75,7 +84,7 @@ export const RootStacks = StackNavigator({
         navigationOptions: {
             title: null,
             headerStyle: {
-                backgroundColor: '#32CD32',
+                backgroundColor: '#28a745',
                 // elevation: 0, 
                 // opacity: 0
             },
@@ -93,7 +102,7 @@ export const RootStacks = StackNavigator({
         navigationOptions: {
             // title: '',
             headerStyle: {
-                backgroundColor: '#32CD32',
+                backgroundColor: '#28a745',
                 elevation: 0, 
             },
             headerTitleStyle: {
@@ -108,7 +117,7 @@ export const RootStacks = StackNavigator({
         navigationOptions: {
             title: null,
             headerStyle: {
-                backgroundColor: '#32CD32',
+                backgroundColor: '#28a745',
                 elevation: 0, 
                 opacity: 0
             },
@@ -123,7 +132,7 @@ export const RootStacks = StackNavigator({
         navigationOptions: {
             title: 'Postal Payment',
             headerStyle: {
-                backgroundColor: '#32CD32'
+                backgroundColor: '#28a745'
             },
             headerBackTitleStyle : {
                 opacity: 1
@@ -136,7 +145,7 @@ export const RootStacks = StackNavigator({
         navigationOptions: {
             title: null,
             headerStyle: {
-                backgroundColor: '#32CD32',
+                backgroundColor: '#28a745',
                 elevation: 0, 
             },
             headerTintColor: '#ffffff'
@@ -148,7 +157,7 @@ export const RootStacks = StackNavigator({
             // tabBarVisible: false,
             tabBarOptions: {
                 style: {
-                    backgroundColor: '#32CD32',
+                    backgroundColor: '#28a745',
                     elevation: 0, 
                     opacity: 0
                 },

@@ -10,8 +10,8 @@ export default class CardContent extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text style={{ fontSize: 30, color: '#000', fontWeight: 'bold' }}>P.BOOKER</Text>
-        <Text style={{ fontSize: 20 }}>Football Stadium Booking</Text>
+        <Text style={{ fontSize: 30, color: '#000', fontWeight: 'bold' }}>{'P.BOOKER'}</Text>
+        <Text style={{ fontSize: 20, marginTop: 15 }}>{'Ứng Dụng Đặt Lịch Sân Bóng'}</Text>
       </View>
     );
   }

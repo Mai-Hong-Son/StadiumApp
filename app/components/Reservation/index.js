@@ -40,35 +40,17 @@ export default class ReservationView extends Component {
   componentWillReceiveProps(nextProps) {
       const { isBook: { success } } = nextProps.statusBooking;
       const { checkClickBtnBook } = this.state;
+      const { state: { params: { session: { stadiumId: { name } } } } } = this.props.navigation;
       
       if(success && checkClickBtnBook) {
-        Alert.alert(
-            'Confirm',
-            'Booking Success! Would you like to continue booking?',
-            [
-              {text: 'No', onPress: () => {
-                  this.setState({
-                    checkClickBtnBook: false
-                  });
-                  this.props.navigation.navigate('BookingSuccess');
-                }, style: 'cancel'},
-              {text: 'Yes', onPress: () => {
-                  if(this.childStadiumsData.length === 0 || this.childStadiumsData.length === undefined) {
-                    this.setState({
-                        checkClickBtnBook: false
-                    });
-                    this.props.navigateMainTab('MySessions');
-                  } else {
-                      console.log('OK');
-                  }
-              }},
-            ],
-            { cancelable: false }
-        )
+        this.setState({
+            checkClickBtnBook: false
+          });
+        this.props.navigation.navigate('BookingSuccess', { stadiumName: name });
       } else if(!success && checkClickBtnBook) {
         Alert.alert(
-            'Confirm',
-            'Stadium Is Booked! Please, Choose Another Stadium!',
+            'Xác nhận',
+            'Đặt sân thất bại!',
             [
               {text: 'OK', onPress: () => console.log('OK Pressed')},
             ],
@@ -101,7 +83,7 @@ export default class ReservationView extends Component {
 
     _.map( childStadiums, item => {
         listChild.push({
-            label: 'Stadium ' + item.numberOfS,
+            label: 'Sân ' + item.numberOfS,
             value: item._id
         });
     } );
@@ -124,7 +106,7 @@ export default class ReservationView extends Component {
         })
     } else {
         this.setState({
-            textValidate: 'Please! Put bank acount number!'
+            textValidate: 'Chưa nhập số tài khoản!'
         })
     }
   }
@@ -142,7 +124,7 @@ export default class ReservationView extends Component {
 
     if(this.state.bankNumber === '' || this.state.bankNumber.length <= 6) {
         this.setState({
-            textValidate: 'Bank number must be > 6 character'
+            textValidate: 'Số tài khoản phải > 6 ký tự'
         });
     } else {
         this.props.createNewReservation(reservation);
@@ -156,9 +138,9 @@ export default class ReservationView extends Component {
     const { state: { params: { session: { price } } } } = this.props.navigation;
 
     return (
-      <View style={{ flex: 1, justifyContent: 'flex-start', alignItems: 'center', backgroundColor: '#32CD32'}}>
+      <View style={{ flex: 1, justifyContent: 'flex-start', alignItems: 'center', backgroundColor: '#28a745'}}>
         <View style={{ width: '90%', backgroundColor: '#ffffff', marginTop: 20, borderRadius: 4, padding: 10 }}>
-            <Text>{'Choose Number Stadium:'}</Text>
+            <Text>{'Chọn Sân:'}</Text>
             <RadioForm
                 radio_props={this.childStadiumsData}
                 style={{ alignItems: 'flex-start', marginTop: 10 }}
@@ -180,18 +162,18 @@ export default class ReservationView extends Component {
             <TextInput
                 style={{ height: 44, paddingLeft: 10, borderColor: '#6e6e6e', borderRadius: 4, borderWidth: 1, marginTop: 10 }}
                 underlineColorAndroid='transparent'
-                placeholder='Bank account number'
+                placeholder='Số tài khoản'
                 placeholderTextColor='#6e6e6e'
                 onChangeText={this.onChangeText}/>
             <Text style={{ color: 'red', fontSize: 12, marginTop: 5 }}>{this.state.textValidate}</Text>
 
-            <Text style={{ color: '#292941', fontSize: 17, marginTop: 5 }}>{'Price: ' + price + '.000'}</Text>
+            <Text style={{ color: '#292941', fontSize: 17, marginTop: 5 }}>{'Giá: ' + price + '.000'}</Text>
         </View>
 
         <TouchableOpacity style={{ marginTop: 15, width: '90%' }} onPress={this.onReservation}>
             <View
             style={{ height: 44, backgroundColor: '#ffffff', borderColor: '#D91283', borderWidth: 1, borderRadius: 4, justifyContent: 'center', alignItems: 'center' }}>
-                <Text style={{ color: '#D91283', fontSize: 15, textAlign: 'center' }}>{'CONFIRM'}</Text>
+                <Text style={{ color: '#D91283', fontSize: 15, textAlign: 'center' }}>{'ĐẶT'}</Text>
             </View>
         </TouchableOpacity>
       </View>

@@ -13,7 +13,7 @@ import Sessions from './../../Sessions/withConnect';
 
 const TABBAR_TOP_STYLES = {
     container: {
-      backgroundColor: '#32CD32',
+      backgroundColor: '#28a745',
       height: 36,
     },
     containerFlex: {

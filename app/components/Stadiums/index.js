@@ -42,7 +42,7 @@ export default class StadiumView extends Component {
     const { data, status } = nextProps.districts
     
     if( status === true && isSetData === false && !isSearch) {
-      districtName.push("All");
+      districtName.push("Tất cả");
       data.forEach(element => {
         districtName.push(element.name)
       });
@@ -107,7 +107,7 @@ export default class StadiumView extends Component {
   }
 
   onSelectDropdown = (index, value) => {
-    if(value === "All") {
+    if(value === "Tất cả") {
       this.onRefresh();
     } else {
       const idDistrict = _.find(this.props.districts.data, (item) => {
@@ -144,7 +144,7 @@ export default class StadiumView extends Component {
         <TextInput
         style={styles.containerFilter}
         underlineColorAndroid='transparent'
-        placeholder='Search for stadiums'
+        placeholder='Tìm kiếm sân bóng'
         placeholderTextColor='#6e6e6e'
         onChangeText={this.onChangeText}/>
 
@@ -155,14 +155,14 @@ export default class StadiumView extends Component {
           borderRadius: 4,
         }}
         dropdownTextHighlightStyle={{
-          color: '#32CD32'
+          color: '#28a745'
         }}
         textStyle={{
           textAlign: 'center',
           color: '#FF1493'
         }}
         options={this.state.districtName}
-        defaultValue={'Choose district...'}
+        defaultValue={'Chọn khu vực...'}
         onSelect={this.onSelectDropdown}
         />
       </View>
@@ -208,10 +208,10 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     height: 230,
-    backgroundColor: "#32CD32"
+    backgroundColor: "#28a745"
   },
   containerHeader: {
-    backgroundColor: '#32CD32',
+    backgroundColor: '#28a745',
     justifyContent: 'center',
     height: 130,
 },
