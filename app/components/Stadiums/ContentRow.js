@@ -18,20 +18,31 @@ export default class ContentRow extends Component {
         }
     }
 
-    componentWillReceiveProps(nextProps) {
-        const { item: { rates } } = nextProps;
+    componentDidMount() {
+        this.setState({
+            ratingScore: this.ratingScore
+        })
+    }
 
-        if(rates.length !== 0 || rates.length !== undefined) {
-            _.map(rates, (item) => {
-                this.setState({
-                    ratingScore: (this.state.ratingScore + item.score)/rates.length
-                })
-            })
-        }
+    get ratingScore() {
+        const { item: { rates } } = this.props;
+        var sum = 0;
+
+        _.map(rates, (item) => {
+            sum = sum + item.score;
+        })
+
+        return sum;
+    }
+
+    componentWillReceiveProps(nextProps) {
+        this.setState({
+            ratingScore: this.ratingScore
+        })
     }
 
     render() {
-        const { item: { name, address, thumbnail } } = this.props;
+        const { item: { name, address, thumbnail, rates } } = this.props;
 
         return (
         <View style={styles.container}>
@@ -46,7 +57,7 @@ export default class ContentRow extends Component {
                 <StarRating
                     disabled
                     maxStars={5}
-                    rating={this.state.ratingScore}
+                    rating={this.state.ratingScore/(rates.length)}
                     starSize={18}
                     containerStyle={{ width: 100 }}
                     selectedStar={() => null}

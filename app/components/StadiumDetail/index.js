@@ -42,8 +42,13 @@ export default class StadiumDetailView extends Component {
     const { state: { params: { stadiumId } } } = this.props.navigation;
     const { data } = nextProps.allStadiums;
 
-    if(nextProps.allStadiums.length !== 0) {
-      this.caculationRating(_.filter(data, { _id: stadiumId })[0]);
+    if(!_.isEmpty(_.filter(data, { _id: stadiumId }))) {
+      const { rates } = _.filter(data, { _id: stadiumId })[0];
+
+      this.setState({
+        ratingScore: (this.ratingScore(rates)/rates.length).toFixed(1),
+        countRating: rates.length
+      })
     }
   }
 
@@ -54,17 +59,14 @@ export default class StadiumDetailView extends Component {
     return _.filter(data, { _id: stadiumId });
   }
 
-  caculationRating = (stadium) => {
-    const { rates } = stadium
+  ratingScore = (rates) => {
+    var sum = 0;
 
-    if(rates.length !== 0 || rates.length !== undefined) {
-      _.map(rates, (item) => {
-          this.setState({
-            ratingScore: ((this.state.ratingScore + item.score)/rates.length).toFixed(1),
-            countRating: rates.length
-          })
-      })
-    }
+    _.map(rates, (item) => {
+        sum = sum + item.score;
+    })
+
+    return sum;
   }
 
   get locationStadium() {

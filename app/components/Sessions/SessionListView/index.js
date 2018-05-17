@@ -5,7 +5,8 @@ import {
   View,
   Animated,
   FlatList,
-  Easing
+  Easing,
+  Text
 } from 'react-native';
 import _ from 'lodash';
 import DataRow from './DataRow/index';
@@ -73,6 +74,16 @@ export default class SessionListView extends Component {
 
     render() {
         const { sessionsData, variant } = this.props;
+
+        // const content = _.isEmpty(sessionsData) ? (
+        //     <View style={{ flex: 1, width: '100%', justifyContent: 'center', alignItems: 'center' }}>
+        //     <Text style={{color: '#6e6e6e', fontSize: 20}}>{'!'}</Text>
+        //     <Text style={{color: '#6e6e6e', fontSize: 15}}>{'Emty Data'}</Text>
+        //     </View>) : (<FlatList
+        //     data={sessionsData}
+        //     renderItem={this.renderItem}
+        //     keyExtractor={({ _id }) => _id}
+        //     />);
 
         return (
         <View style={styles.container}>

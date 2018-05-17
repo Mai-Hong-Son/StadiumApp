@@ -20,7 +20,7 @@ export default class StadiumView extends Component {
 
     this.state = {
       page: 1,
-      perPage: 20,
+      perPage: 10,
       loadingFooter: false,
       stadiumsData: [],
       districtName: [],
@@ -48,7 +48,7 @@ export default class StadiumView extends Component {
       });
       this.setState({
         isSetData: true,
-        stadiumsData: nextProps.stadiums.data
+        stadiumsData: nextProps.stadiums.data,
       })
     }
 
@@ -95,15 +95,17 @@ export default class StadiumView extends Component {
   }
 
   onEndReached = () => {
-    if(this.state.isloadStadiumByDisttrict === true) {
-      this.props.listStadiumByDistrict(this.state.page + 1, this.state.perPage, this.state.idDistrict);
-    } else {
-      this.props.getAllStadium(this.state.page + 1, this.state.perPage);
-    }
-    this.setState({
-      page: this.state.page + 1,
-      isloadData: false
-    });
+    // if(this.state.stadiumsData.length >= 20) {
+      if(this.state.isloadStadiumByDisttrict === true) {
+        this.props.listStadiumByDistrict(this.state.page + 1, this.state.perPage, this.state.idDistrict);
+      } else {
+        this.props.getAllStadium(this.state.page + 1, this.state.perPage);
+      }
+      this.setState({
+        page: this.state.page + 1,
+        isloadData: false
+      });
+    // }
   }
 
   onSelectDropdown = (index, value) => {
@@ -218,6 +220,9 @@ const styles = StyleSheet.create({
 stylefilter: {
     flex: 1,
     justifyContent: 'center',
+    width: '100%',
+    paddingLeft: 16,
+    paddingRight: 16
 },
 Buttonfilter: {
     flex: 1,
@@ -228,7 +233,7 @@ iconFilter: {
 },
 containerFilter: {
     flexDirection: 'row',
-    width: 343,
+    width: '100%',
     height: 44,
     borderRadius:4,
     borderWidth: 1,
@@ -256,7 +261,6 @@ menuDropdown: {
   backgroundColor: '#E0FFFF',
   opacity: 0.7,
   alignSelf: 'flex-start',
-  marginLeft: 16,
   borderRadius: 4,
   justifyContent: 'center',
   borderColor: 'gray',

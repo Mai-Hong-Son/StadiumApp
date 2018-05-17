@@ -3,8 +3,9 @@ import { LoginManager, AccessToken, GraphRequest, GraphRequestManager } from 're
 import { View, Text, BackHandler, Image, TouchableHighlight, StyleSheet} from 'react-native';
 import OneSignal from 'react-native-onesignal';
 import LinearGradient from 'react-native-linear-gradient';
+import PushController from './../Reusables/PushController';
 
-const ronaldoImage = require('./../../../assets/images/ronaldo.png');
+const torresImage = require('./../../../assets/images/torres.png');
 
 export default class LoginView extends Component {
   constructor(props){
@@ -41,7 +42,7 @@ export default class LoginView extends Component {
   }
 
   onReceived(notification) {
-    console.warn("Notification received: ", notification.displayType);
+    console.warn("Notification received: ", notification);
   }
 
   onIds(device) {
@@ -116,8 +117,8 @@ export default class LoginView extends Component {
           <Image
           style={{
             width: '90%',
-            height: 350}}
-          source={ronaldoImage}/>
+            height: 450}}
+          source={torresImage}/>
 
           <View style={{ height: 2, backgroundColor: '#6e6e6e', width: '90%'}} />
 
@@ -129,6 +130,7 @@ export default class LoginView extends Component {
             </Text>
           </TouchableHighlight>
         </LinearGradient>
+        <PushController/>
       </View>
       
     );

@@ -10,7 +10,7 @@ import {
 } from 'react-native';
 import _ from 'lodash';
 import PushNotification from 'react-native-push-notification';
-import PushController from './../Reusables/PushController';
+// import PushController from './../Reusables/PushController';
 
 const statusImage = require('./../../../assets/images/Cute-Ball-Go-icon.png');
 
@@ -56,7 +56,7 @@ export default class BookingSuccessView extends Component {
             <Text style={{ fontSize: 15, textAlign: 'center', color: '#D91283' }}>{'OK'}</Text>
           </View>
         </TouchableOpacity>
-        <PushController/>
+        {/* <PushController/> */}
       </View>
     );
   }

@@ -5,10 +5,13 @@ import {
   Text,
   View,
   TouchableOpacity,
-  Alert
+  Alert,
+  Image
 } from 'react-native';
 import StarRating from 'react-native-star-rating';
 import _ from 'lodash';
+
+const torresRatingImage = require('./../../../assets/images/torres-rating.png');
 
 export default class RatingView extends Component {
 
@@ -41,32 +44,47 @@ export default class RatingView extends Component {
 
     return (
       <View style={styles.container}>
-        <StarRating
-          disabled={false}
-          maxStars={5}
-          rating={this.state.starCount}
-          starSize={25}
-          containerStyle={{ width: 100 }}
-          selectedStar={(rating) => {
-            this.setState({
-              starCount: rating
-            });
-          }}
-          fullStarColor='#FF9800'
-        />
-        <TouchableOpacity style={{ marginTop: 15 }} onPress={() => {
-              const rating = {
-                userId,
-                stadiumId,
-                score
-              }
-              this.props.createNewRating(rating);
-              this.props.navigateMainTab('Home')
-        }}>
-          <View style={{ width: 150, height: 44, borderColor: '#D91283', borderWidth: 1, borderRadius: 4, justifyContent: 'center', backgroundColor: '#ffffff' }}>
-            <Text style={{ fontSize: 15, textAlign: 'center', color: '#D91283' }}>{'CHẤM ĐIỂM'}</Text>
-          </View>
-        </TouchableOpacity>
+        <View style={{flex:1,width: '100%', alignItems: 'center', paddingTop: 15}}>
+          <StarRating
+            disabled={false}
+            maxStars={5}
+            rating={this.state.starCount}
+            starSize={25}
+            containerStyle={{ width: 150 }}
+            selectedStar={(rating) => {
+              this.setState({
+                starCount: rating
+              });
+            }}
+            fullStarColor='#FF9800'
+          />
+          <TouchableOpacity style={{ marginTop: 10 }} onPress={() => {
+                const rating = {
+                  userId,
+                  stadiumId,
+                  score
+                }
+                this.props.createNewRating(rating);
+                Alert.alert(
+                    'Xác nhận',
+                    'Bình chọn thành công! Cảm ơn bạn!',
+                    [
+                      {text: 'OK', onPress: () => this.props.navigation.goBack()},
+                    ],
+                    { cancelable: false }
+                )
+          }}>
+            <View style={{ width: 150, height: 44, borderColor: '#D91283', borderWidth: 1, borderRadius: 4, justifyContent: 'center', backgroundColor: '#ffffff' }}>
+              <Text style={{ fontSize: 15, textAlign: 'center', color: '#D91283' }}>{'CHẤM ĐIỂM'}</Text>
+            </View>
+          </TouchableOpacity>
+        </View>
+
+        <Image
+          style={{
+            width: '90%',
+            flex: 5}}
+          source={torresRatingImage}/>
       </View>
     );
   }
@@ -75,7 +93,6 @@ export default class RatingView extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center'
+    justifyContent: 'space-between'
   },
 });
