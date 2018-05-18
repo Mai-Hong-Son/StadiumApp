@@ -7,7 +7,7 @@ import com.dieam.reactnativepushnotification.ReactNativePushNotificationPackage;
 import com.react.rnspinkit.RNSpinkitPackage;
 import com.oblador.vectoricons.VectorIconsPackage;
 import com.geektime.rnonesignalandroid.ReactNativeOneSignalPackage;
-import com.idehub.GoogleAnalyticsBridge.GoogleAnalyticsBridgePackage;
+// import com.idehub.GoogleAnalyticsBridge.GoogleAnalyticsBridgePackage;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookSdk;
 import com.facebook.reactnative.androidsdk.FBSDKPackage;
@@ -44,7 +44,7 @@ public class MainApplication extends Application implements ReactApplication {
             new RNSpinkitPackage(),
             new VectorIconsPackage(),
             new ReactNativeOneSignalPackage(),
-            new GoogleAnalyticsBridgePackage(),
+            // new GoogleAnalyticsBridgePackage(),
             new FBSDKPackage(mCallbackManager),
             new MapsPackage(),
             new LinearGradientPackage()
