@@ -52,7 +52,7 @@ export default class ReservationView extends Component {
             'Xác nhận',
             'Đặt sân thất bại!',
             [
-              {text: 'OK', onPress: () => console.log('OK Pressed')},
+              {text: 'OK', onPress: () => this.props.navigateMainTab('HomeTab')},
             ],
             { cancelable: false }
         )
@@ -83,7 +83,7 @@ export default class ReservationView extends Component {
 
     _.map( childStadiums, item => {
         listChild.push({
-            label: 'Sân ' + item.numberOfS,
+            label: 'Sân ' + item.numberOfS + '      ',
             value: item._id
         });
     } );
@@ -143,6 +143,7 @@ export default class ReservationView extends Component {
             <Text>{'Chọn Sân:'}</Text>
             <RadioForm
                 radio_props={this.childStadiumsData}
+                formHorizontal
                 style={{ alignItems: 'flex-start', marginTop: 10 }}
                 initial={0}
                 buttonColor={'#D91283'}

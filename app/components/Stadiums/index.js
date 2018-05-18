@@ -95,7 +95,7 @@ export default class StadiumView extends Component {
   }
 
   onEndReached = () => {
-    // if(this.state.stadiumsData.length >= 20) {
+    if(this.state.stadiumsData.length >= 10) {
       if(this.state.isloadStadiumByDisttrict === true) {
         this.props.listStadiumByDistrict(this.state.page + 1, this.state.perPage, this.state.idDistrict);
       } else {
@@ -105,7 +105,7 @@ export default class StadiumView extends Component {
         page: this.state.page + 1,
         isloadData: false
       });
-    // }
+    }
   }
 
   onSelectDropdown = (index, value) => {

@@ -13,6 +13,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import moment from 'moment';
 import _ from 'lodash';
 import MapView, { Marker } from 'react-native-maps';
+import LoadingPlaceholder from './../Reusables/Loadings/LoadingPlaceholder';
 
 const window = Dimensions.get('window');
 const torressImage = require('./../../../assets/images/torress.png');
@@ -93,7 +94,7 @@ export default class StadiumDetailView extends Component {
 
   render() {
 
-    if(this.stadiumsData[0] === undefined) return null;
+    if(this.stadiumsData[0] === undefined) return <LoadingPlaceholder visible={true} />;
 
     const { name, address, rates, description, _id, location, amenitieIds,thumbnail } = this.stadiumsData[0];
     const amenities = _.map(amenitieIds, item => this.renderAmeninty(item));
