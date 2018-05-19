@@ -40,13 +40,14 @@ export default class ReservationView extends Component {
   componentWillReceiveProps(nextProps) {
       const { isBook: { success } } = nextProps.statusBooking;
       const { checkClickBtnBook } = this.state;
-      const { state: { params: { session: { stadiumId: { name } } } } } = this.props.navigation;
+      const { state: { params: { session } } } = this.props.navigation;
+      const { stadiumId: { name }, startedAt } = session;
       
       if(success && checkClickBtnBook) {
         this.setState({
             checkClickBtnBook: false
           });
-        this.props.navigation.navigate('BookingSuccess', { stadiumName: name });
+        this.props.navigation.navigate('BookingSuccess', { stadiumName: name, timeBooking: startedAt });
       } else if(!success && checkClickBtnBook) {
         Alert.alert(
             'Xác nhận',

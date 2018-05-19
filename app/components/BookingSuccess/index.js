@@ -9,6 +9,7 @@ import {
   AppState
 } from 'react-native';
 import _ from 'lodash';
+import moment from 'moment';
 import PushNotification from 'react-native-push-notification';
 // import PushController from './../Reusables/PushController';
 
@@ -29,14 +30,16 @@ export default class BookingSuccessView extends Component {
   }
 
   handleAppStateChange = (appState) => {
-    const { state: { params: { stadiumName } } } = this.props.navigation;
+    const { state: { params: { stadiumName, timeBooking } } } = this.props.navigation;
 
     if( appState === 'background' ) {
-      var date = new Date(Date.now() + (10 * 1000));
+      const date = new Date(Date.now() + (10 * 1000));
+      const startHour = moment(timeBooking).format('HH:mm');
+      const dateBooking =  moment(timeBooking).format('MM/DD');
 
       PushNotification.localNotificationSchedule({
         title: "Thông báo",
-        message: `Bạn vừa đặt 1 sân ở ${stadiumName}. Đến đúng giờ nhé! ^_^`,
+        message: `Bạn vừa đặt 1 sân ở ${stadiumName} vào lúc ${startHour} ngày ${dateBooking}. Đến đúng giờ nhé! ^_^`,
         date,
       });
     }

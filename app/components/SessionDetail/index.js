@@ -34,8 +34,9 @@ export default class SessionDetailView extends Component {
 
   onMoveSchedule = () => {
     const { state: { params: { session } } } = this.props.navigation;
+    const { childStadiums } = session;
 
-    if(this.reservationData.length===4) {
+    if(this.reservationData.length===childStadiums.length) {
       Alert.alert(
           'Xác nhận',
           'Không còn sân trống! Hãy di chuyển đến sân khác!',
