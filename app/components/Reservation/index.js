@@ -143,7 +143,7 @@ export default class ReservationView extends Component {
             <Text>{'Chọn Sân:'}</Text>
             <RadioForm
                 radio_props={this.childStadiumsData}
-                formHorizontal
+                // formHorizontal
                 style={{ alignItems: 'flex-start', marginTop: 10 }}
                 initial={0}
                 buttonColor={'#D91283'}

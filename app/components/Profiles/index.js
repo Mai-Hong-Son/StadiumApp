@@ -9,6 +9,7 @@ import {
   Alert
 } from 'react-native';
 import _ from 'lodash';
+import LoadingPlaceholder from './../Reusables/Loadings/LoadingPlaceholder';
 
 export default class Profiles extends Component {
 
@@ -43,7 +44,7 @@ export default class Profiles extends Component {
   }
 
   render() {
-    if(_.isEmpty(this.userData)) return null;
+    if(_.isEmpty(this.userData)) return <LoadingPlaceholder visible={true} />;
 
     const { name, createdAt, userId } = this.userData[0];
 
