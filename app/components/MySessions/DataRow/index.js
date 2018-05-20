@@ -17,9 +17,11 @@ export default class DataRow extends Component {
     const { startedAt, duration } = sessionId;
     const { stadiumId, numberOfS} = childStadiumId
     const deleteButton = tabId === 'upcoming' ? (
-      <View style={styles.btnDelete}>
-        <Text>{'HỦY'}</Text>
-      </View>
+      <TouchableOpacity style={{ marginRight: 30 }} onPress={() => this.props.onDelete()}>
+        <View style={styles.btnDelete}>
+          <Text>{'HỦY'}</Text>
+        </View>
+      </TouchableOpacity>
     ) : null;
 
     return (
@@ -60,7 +62,6 @@ const styles = StyleSheet.create({
       borderRadius: 4,
       justifyContent: 'center',
       alignItems: 'center',
-      backgroundColor: '#FFC0CB',
-      marginRight: 30
+      backgroundColor: '#FFC0CB'
     }
 });

@@ -116,12 +116,11 @@ export default class MySessionsView extends Component {
     const { tabId, variant } = this.props;
 
     return (
-      <TouchableOpacity onPress={() => this.onDelete(item._id)}>
-        <DataRow
-        reservationData={item}
-        tabId={tabId}
-        />
-      </TouchableOpacity>
+      <DataRow
+      reservationData={item}
+      tabId={tabId}
+      onDelete={() => this.onDelete(item._id)}
+      />
     );
   };
 
