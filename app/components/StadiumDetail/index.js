@@ -46,10 +46,12 @@ export default class StadiumDetailView extends Component {
     if(!_.isEmpty(_.filter(data, { _id: stadiumId }))) {
       const { rates } = _.filter(data, { _id: stadiumId })[0];
 
-      this.setState({
-        ratingScore: (this.ratingScore(rates)/rates.length).toFixed(1),
-        countRating: rates.length
-      })
+      if(!_.isEmpty(rates)) {
+        this.setState({
+          ratingScore: (this.ratingScore(rates)/rates.length).toFixed(1),
+          countRating: rates.length
+        })
+      }
     }
   }
 
@@ -63,9 +65,11 @@ export default class StadiumDetailView extends Component {
   ratingScore = (rates) => {
     var sum = 0;
 
-    _.map(rates, (item) => {
-        sum = sum + item.score;
-    })
+    if(!_.isEmpty(rates)){
+      _.map(rates, (item) => {
+          sum = sum + item.score;
+      })
+    }
 
     return sum;
   }
