@@ -27,6 +27,33 @@ export function createNewReservation(reservation) {
     }
 }
 
+function deleteRsv(reservationId) {
+    return {
+        type: 'DELETE_RESERVATION',
+        payload: {
+            request:{
+                url:`/reservation/${reservationId}`,
+                method: 'DELETE',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                }
+            }
+        }
+    }
+}
+
+export function deleteReservation(reservationId) {
+    return dispatch => {
+        try{
+            dispatch(deleteRsv(reservationId));
+        }
+        catch(err) {
+            console.log(err)
+        }
+    }
+}
+
 function listReservation() {
     return {
         type: 'GET_ALL_RESERVATION',

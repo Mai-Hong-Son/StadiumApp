@@ -3,24 +3,35 @@ import {
   Platform,
   StyleSheet,
   View,
+  TouchableOpacity,
+  Text
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Timestamps from './Timestamps';
 import DetailInfo from './DetailInfo';
 
 export default class DataRow extends Component {
+
   render() {
-    const { reservationData: { childStadiumId, sessionId } } = this.props;
+    const { reservationData: { childStadiumId, sessionId }, tabId } = this.props;
     const { startedAt, duration } = sessionId;
     const { stadiumId, numberOfS} = childStadiumId
+    const deleteButton = tabId === 'upcoming' ? (
+      <View style={styles.btnDelete}>
+        <Text>{'HỦY'}</Text>
+      </View>
+    ) : null;
 
     return (
-      <View style={styles.container}>
-        <Icon name='md-football' size={30} color="#900"  />
-        <View style={styles.content}>
-          <Timestamps color={'black'} duration={duration} time={startedAt}/>
-          <DetailInfo stadium={stadiumId} numberOfS={numberOfS}/>
+      <View style={{flex: 1, width: '100%', alignItems: 'flex-end'}}>
+        <View style={styles.container}>
+          <Icon name='md-football' size={30} color="#900"  />
+          <View style={styles.content}>
+            <Timestamps color={'black'} duration={duration} time={startedAt}/>
+            <DetailInfo stadium={stadiumId} numberOfS={numberOfS}/>
+          </View>
         </View>
+        {deleteButton}
       </View>
     );
   }
@@ -42,4 +53,14 @@ const styles = StyleSheet.create({
         alignItems: 'flex-start',
         paddingTop: 4,
     },
+
+    btnDelete: {
+      height: 40,
+      width: 150,
+      borderRadius: 4,
+      justifyContent: 'center',
+      alignItems: 'center',
+      backgroundColor: '#FFC0CB',
+      marginRight: 30
+    }
 });

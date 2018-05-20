@@ -6,7 +6,9 @@ import {
   View,
   Animated,
   FlatList,
-  Easing
+  Easing,
+  TouchableOpacity,
+  Alert
 } from 'react-native';
 import moment from 'moment';
 import _ from 'lodash';
@@ -73,6 +75,10 @@ export default class MySessionsView extends Component {
           return item.userId._id === this.userData[0]._id;})
       });
       this.toggleTimeline(true);
+    } else {
+      this.setState({
+        reservationData: []
+      })
     }
   }
 
@@ -91,12 +97,36 @@ export default class MySessionsView extends Component {
     }).start()
   );
 
+  onDelete = (id) => {
+    Alert.alert(
+      'Xác nhận',
+      'Bạn có muốn hủy lịch này!',
+      [
+        {text: 'Yes', onPress: () => {
+          this.props.deleteReservation(id)
+          this.setState({
+            reservationData: _.remove(this.state.reservationData, item => {
+              return item._id === id;
+            })
+          })
+        }},
+        {text: 'No', onPress: () => console.log('no')},
+      ],
+      { cancelable: false }
+    )
+  }
+
   renderItem = ({item}) => {
-      return (
-          <DataRow
-          reservationData={item}
-          />
-      );
+    const { tabId, variant } = this.props;
+
+    return (
+      <TouchableOpacity onPress={() => this.onDelete(item._id)}>
+        <DataRow
+        reservationData={item}
+        tabId={tabId}
+        />
+      </TouchableOpacity>
+    );
   };
 
   renderTimeline = () => {
@@ -116,7 +146,7 @@ export default class MySessionsView extends Component {
       <View style={styles.container}>
         <View style={{ flex: 1, width: '100%', justifyContent: 'center', alignItems: 'center' }}>
           <Text style={{color: '#6e6e6e', fontSize: 20}}>{'!'}</Text>
-          <Text style={{color: '#6e6e6e', fontSize: 15}}>{'Chưa có lịch hiện tại'}</Text>
+          <Text style={{color: '#6e6e6e', fontSize: 15}}>{'Chưa có lịch'}</Text>
         </View>
       </View>
     );

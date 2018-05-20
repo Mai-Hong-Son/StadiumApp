@@ -14,6 +14,7 @@ function mapDispatchToProps(dispatch) {
     return {
         getAllUser: () => dispatch(handleUser.getAllUser()),
         getALlReservation: () => dispatch(handleReservation.getAllReservation()),
+        deleteReservation: (reservationId) => dispatch(handleReservation.deleteReservation(reservationId))
     };
 }
 
