@@ -103,12 +103,8 @@ export default class MySessionsView extends Component {
       'Bạn có muốn hủy lịch này!',
       [
         {text: 'Yes', onPress: () => {
-          this.props.deleteReservation(id)
-          this.setState({
-            reservationData: _.remove(this.state.reservationData, item => {
-              return item._id === id;
-            })
-          })
+          this.props.deleteReservation(id);
+          this.props.getALlReservation();
         }},
         {text: 'No', onPress: () => console.log('no')},
       ],
