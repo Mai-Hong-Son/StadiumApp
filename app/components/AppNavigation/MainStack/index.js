@@ -2,7 +2,7 @@ import React from 'react';
 import { TabNavigator, StackNavigator, TabBarBottom } from 'react-navigation';
 import Login from '../../Login/withConnect';
 import Home from '../../Home/index';
-import MySessions from '../../MySessions/withConnect';
+import MySessionsTabs from  './MySessionsTabs';
 import Profiles from '../../Profiles/withConnect';
 import Stadiums from '../../Stadiums/withConnect';
 import StadiumDetail from '../../StadiumDetail/withConnect';
@@ -19,24 +19,30 @@ export const RootTabs = TabNavigator({
         screen: Home,
         navigationOptions: {
             title: 'Trang Chủ',
+            header: null
         }
     },
     Stadiums: {
         screen: Stadiums,
         navigationOptions: {
             title: 'Chọn Sân',
+            header: null,
         }
     },
     MySessions: {
-        screen: MySessions,
+        screen: MySessionsTabs,
         navigationOptions: {
-            title: 'Lịch Đã Đặt',
+            title: 'Lịch Của Tôi',
+            headerStyle: { backgroundColor: '#28a745', borderBottomColor: 'transparent' },
+            headerTitleStyle: { color: '#fff' },
+            headerLeft: null
         }
     },
     Profile: {
         screen: Profiles,
         navigationOptions: {
             title: 'Thông Tin',
+            header: null
         }
     },
 },{
@@ -75,9 +81,9 @@ export const RootTabs = TabNavigator({
 export const RootStacks = StackNavigator({
     HomeTab: {
         screen: RootTabs,
-        navigationOptions: {
-            header: null,
-        }
+        // navigationOptions: {
+        //     header: null,
+        // }
     },
     StadiumDetail: {
         screen: StadiumDetail,
@@ -103,7 +109,8 @@ export const RootStacks = StackNavigator({
             // title: '',
             headerStyle: {
                 backgroundColor: '#28a745',
-                elevation: 0, 
+                borderBottomColor: 'transparent',
+                elevation: 0,
             },
             headerTitleStyle: {
                 color: '#ffffff',

@@ -8,7 +8,7 @@ import {
   FlatList,
   Easing
 } from 'react-native';
-import Header from './Header';
+import moment from 'moment';
 import _ from 'lodash';
 
 import DataRow from './DataRow/index';
@@ -28,6 +28,8 @@ const COLORS = {
     PURPLE:                 '#83358b',
 };
 
+const currentDate = new Date();
+
 export default class MySessionsView extends Component {
 
   constructor(props) {
@@ -45,18 +47,33 @@ export default class MySessionsView extends Component {
     this.props.getALlReservation();
   }
 
+  compareDate = (curDate, dateFuture) => {
+    if ( (curDate - dateFuture) >= 0 )
+      return true;
+    return false; 
+  }
+
   componentWillReceiveProps(nextProps) {
     const { reservations: { data } } = nextProps;
+    const { tabId, variant } = this.props;
   
     if(data.length !== 0 && this.userData.length !== 0) {
       this.setState({
         reservationData: _.filter(data, item => {
+          const { sessionId: { startedAt } } = item;
+          const dateFuture = new Date(startedAt).getTime();
+          switch( tabId ) {
+            case 'upcoming':
+              return item.userId._id === this.userData[0]._id && this.compareDate(currentDate, dateFuture) === false;
+            case 'past':
+              return item.userId._id === this.userData[0]._id && this.compareDate(currentDate, dateFuture) === true;
+            default:
+              return false;
+          }
           return item.userId._id === this.userData[0]._id;})
       });
       this.toggleTimeline(true);
     }
-
-    
   }
 
   get userData() {
@@ -97,17 +114,15 @@ export default class MySessionsView extends Component {
 
     if(reservationData.length === 0) return (
       <View style={styles.container}>
-        <Header/>
         <View style={{ flex: 1, width: '100%', justifyContent: 'center', alignItems: 'center' }}>
           <Text style={{color: '#6e6e6e', fontSize: 20}}>{'!'}</Text>
-          <Text style={{color: '#6e6e6e', fontSize: 15}}>{'Emty Data'}</Text>
+          <Text style={{color: '#6e6e6e', fontSize: 15}}>{'Chưa có lịch hiện tại'}</Text>
         </View>
       </View>
     );
 
     return (
       <View style={styles.container}>
-        <Header/>
         <View style={{ flex: 1, width: '100%' }}>
           {this.renderTimeline()}
           <FlatList
