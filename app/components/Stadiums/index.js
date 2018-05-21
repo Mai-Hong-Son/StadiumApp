@@ -130,7 +130,7 @@ export default class StadiumView extends Component {
       this.setState({
         loadingFooter: false,
         isSearch: true,
-        stadiumsData: _.filter(this.state.stadiumsData, item => _.includes(item.name,textChange)),
+        stadiumsData: _.filter(this.props.stadiums.data, item => _.includes(item.name.toUpperCase(),textChange.toUpperCase())),
       })
     } else {
       this.onRefresh()

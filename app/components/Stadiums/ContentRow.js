@@ -52,7 +52,7 @@ export default class ContentRow extends Component {
             <View style={styles.description}>
                 <View style={styles.contentContainer}>
                     <Text numberOfLines={2} style={styles.title}>{name}</Text>
-                    <Text style={styles.auth}>{address}</Text>
+                    <Text numberOfLines={2} style={styles.auth}>{address}</Text>
                 </View>
                 <StarRating
                     disabled
