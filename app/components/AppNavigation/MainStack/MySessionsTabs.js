@@ -25,7 +25,7 @@ const TABBAR_TOP_CONFIGS = {
   swipeEnabled: true,
   tabBarComponent: TabBarComponent,
   tabBarOptions: {
-    labelStyle: { color: '#fff' },
+    labelStyle: { color: '#fff', fontSize: 15 },
     pressColor: 'transparent',
     scrollEnabled: true,
     upperCaseLabel: false,

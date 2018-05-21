@@ -151,12 +151,12 @@ export default class StadiumDetailView extends Component {
                     <Text style={{ color: '#ffffff' }}>{this.state.ratingScore}</Text>
                   </View>
                   </TouchableOpacity>
-                <Text style={{ width: 100, color: '#6e6e6e', fontSize: 12, marginTop: 5 }}>{this.state.countRating + ' ' + 'Bình chọn'}</Text>
+                <Text style={{ width: 100, color: '#6e6e6e', fontSize: 13, marginTop: 5 }}>{this.state.countRating + ' ' + 'Bình chọn'}</Text>
               </View>
 
               <View style={{ width: '90%', alignItems: 'flex-start', marginTop: 10, borderBottomColor: '#A9A9A9', borderBottomWidth: 2, paddingLeft: 10, paddingBottom: 15 }}>
                 <Text style={styles.name}>{'Giới thiệu'}</Text>
-                <Text style={{ color: '#6e6e6e', fontSize: 12, marginTop: 5 }}>{description}</Text>
+                <Text style={{ color: '#6e6e6e', fontSize: 13, marginTop: 5 }}>{description}</Text>
               </View>
 
               <View style={{ width: '90%', alignItems: 'flex-start', marginTop: 10, borderBottomColor: '#A9A9A9', borderBottomWidth: 2, paddingLeft: 10, paddingBottom: 15 }}>
@@ -166,7 +166,7 @@ export default class StadiumDetailView extends Component {
 
               <View style={{ width: '90%', alignItems: 'flex-start', marginTop: 10, paddingLeft: 10, paddingBottom: 15 }}>
                 <Text style={styles.name}>{'Vị trí'}</Text>
-                <Text style={{ color: '#6e6e6e', fontSize: 12, marginTop: 5 }}>{address}</Text>
+                <Text style={{ color: '#6e6e6e', fontSize: 13, marginTop: 5 }}>{address}</Text>
                 
                   <View style={styles.wrapMap}>
                     <MapView
